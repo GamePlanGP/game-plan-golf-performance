@@ -10,7 +10,7 @@ const techStack = [
   {
     title: "GC Quad Launch Monitor",
     description:
-      "Quadrascopic optical cameras capture ball speed, launch angle, spin rate, spin axis, and club delivery data with tour-level precision. Unlike radar systems, GC Quad measures the ball directly — giving you the most accurate picture of what's actually happening at impact.",
+      "Quadrascopic optical cameras capture ball speed, launch angle, spin rate, spin axis, and club delivery data with tour-level precision. Unlike radar systems, GC Quad measures the ball directly — which means you can use your own gamer ball and get accurate, real-world numbers, not estimates calibrated to a range ball.",
     stat: "200+ data points per shot",
     image: "https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=800&q=80",
     /*
@@ -169,6 +169,8 @@ export default function LessonsPage() {
                 bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
                 credentials: [
                   "Swing Catalyst Ambassador & Level 2",
+                  "Swing Catalyst — Ground Reaction Force Certified",
+                  "TPI Level 3 Golf",
                   "TPI Certified — Power 2 & Fitness 2",
                   "NASM Certified Personal Trainer",
                   "Mach 3 Speed Training Authorized",
@@ -184,7 +186,7 @@ export default function LessonsPage() {
                   Aspect ratio: 3:4 (portrait)
                   Alt: "Christian Chang — Instructor"
                 */
-                bio: "Christian brings professional playing experience to every lesson. After turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits, he now channels that competitive edge into coaching — tailoring each session to the individual player's capabilities rather than forcing a one-size-fits-all swing.",
+                bio: "Christian grew up playing golf in San Diego before turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits. He brings that competitive, data-informed edge to every lesson — tailoring each session to how the individual golfer moves and what they're working toward.",
                 credentials: [
                   "Swing Catalyst Level 2 Certified",
                   "Former Professional Golfer",

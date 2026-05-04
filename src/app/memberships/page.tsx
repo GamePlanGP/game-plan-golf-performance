@@ -8,13 +8,15 @@ const membership = {
   price: "$149",
   period: "/mo",
   features: [
-    "Up to 2 hours of GC Quad bay time per day",
+    "Unlimited GC Quad bay time — practice as much as you want",
     "High-speed video in every bay",
-    "Up to 2 hours of private gym time per day",
+    "Unlimited private gym access",
     "Open 5:00 AM – 10:00 PM, every day",
     "Full launch monitor data",
-    "Premium range balls included",
-    "Online booking access",
+    "Premium golf balls provided",
+    "Fiberbuilt hitting mats — premium turf, regularly maintained",
+    "Members only — private facility, no public walk-ins",
+    "App-based booking & reservations",
     "No contract — cancel anytime",
   ],
 };
@@ -56,9 +58,9 @@ export default function MembershipsPage() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="mt-6 text-lg md:text-xl text-brand-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Self-serve GC Quad bays with high-speed video. Open 5am to 10pm,
-              every day. Real data on every shot — not just a screen and a
-              simulator.
+              Unlimited GC Quad bay time with high-speed video. Fiberbuilt mats.
+              Open 5am to 10pm, every day. Members only — your space, your
+              community, real data on every shot.
             </p>
           </FadeIn>
         </div>
@@ -84,7 +86,7 @@ export default function MembershipsPage() {
                 </span>
               </div>
               <p className="text-brand-gray-300 mt-4">
-                Up to 2 hours per day. Every day. No monthly limits.
+                Unlimited practice. Every day. No caps, no monthly limits.
               </p>
 
               <ul className="mt-8 space-y-3 text-left max-w-sm mx-auto">
@@ -106,6 +108,47 @@ export default function MembershipsPage() {
                 >
                   Become a Member
                 </Button>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Members-Only Community */}
+      <section className="py-16 md:py-20 bg-brand-darker">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <span className="inline-block text-brand-green text-sm font-semibold tracking-widest uppercase mb-4">
+                Member Driven
+              </span>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-white">
+                Your Space. Your Community.
+              </h2>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="bg-brand-gray-950 border border-brand-gray-800 rounded-lg p-6">
+                <p className="text-white font-semibold text-sm mb-2">No Public Walk-Ins</p>
+                <p className="text-brand-gray-400 text-sm leading-relaxed">
+                  Every person in this facility is a member invested in the same
+                  thing — getting better. No general public access, ever.
+                </p>
+              </div>
+              <div className="bg-brand-gray-950 border border-brand-gray-800 rounded-lg p-6">
+                <p className="text-white font-semibold text-sm mb-2">No Parties Next Door</p>
+                <p className="text-brand-gray-400 text-sm leading-relaxed">
+                  No simulator foursomes playing beer golf in the bay next to
+                  you. When you&apos;re focused on improving, so is everyone
+                  around you.
+                </p>
+              </div>
+              <div className="bg-brand-gray-950 border border-brand-gray-800 rounded-lg p-6">
+                <p className="text-white font-semibold text-sm mb-2">Owner Is the Head Coach</p>
+                <p className="text-brand-gray-400 text-sm leading-relaxed">
+                  Game Plan&apos;s owner is the head performance coach — not an
+                  investor or a franchise. Decisions here are made by golfers,
+                  for golfers.
+                </p>
               </div>
             </div>
           </FadeIn>

@@ -310,7 +310,7 @@ export default function Home() {
             <CredBadge
               icon={<ActivityIcon />}
               label="TPI Certified"
-              sublabel="Level 2 Fitness & Power"
+              sublabel="Level 3 Golf · Level 2 Fitness & Power"
               delay={0.2}
             />
           </div>
@@ -330,7 +330,7 @@ export default function Home() {
             <ServiceCard
               icon={<ChartIcon />}
               title="Practice Memberships"
-              description="Self-serve GC Quad bays with high-speed video, open 5am to 10pm, every day. Up to 2 hours of tour-level practice daily for $149/month."
+              description="Self-serve GC Quad bays with high-speed video, open 5am to 10pm, every day. Unlimited tour-level practice for $149/month — the best value in San Diego."
               href="/memberships"
               delay={0}
             />
@@ -465,9 +465,11 @@ export default function Home() {
                     "Self-guided simulator sessions",
                     "No instructor in the bay with you",
                     "Radar-based launch monitors",
+                    "Radar monitors require special range balls — not your gamer ball",
                     "No force plates or biomechanics",
                     "No physical training program",
                     "Franchise — same playbook everywhere",
+                    "Shared space — simulator foursomes and parties in the next bay",
                     "Entertainment-first environment",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
@@ -491,11 +493,12 @@ export default function Home() {
                   {[
                     "Certified instructor coaching every session",
                     "Swing Catalyst force plates — ground reaction data",
-                    "GC Quad optical launch monitor — tour-level accuracy",
+                    "GC Quad optical monitor — use your own ball for real-world numbers",
                     "High-speed video in every bay — even self-serve",
+                    "Fiberbuilt hitting mats — premium turf, regularly maintained and replaced",
                     "Golf-specific physical training (NASM + TPI)",
-                    "Locally owned — built for our members",
-                    "Professional environment — zero distractions",
+                    "Locally owned — owner is the head performance coach",
+                    "Members only — private community, no public walk-ins",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-brand-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
