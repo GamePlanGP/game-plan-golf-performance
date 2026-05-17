@@ -24,7 +24,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 | -------------- | ---------------------------------------------- |
 | `/`            | Home — hero, credibility, services, data viz   |
 | `/lessons`     | Coaching methodology, tech stack, booking CTA   |
-| `/memberships` | Practice tiers, SIM rental, pricing             |
+| `/memberships` | Practice tiers, pricing, "Become a Member" CTA |
+| `/join`        | Membership inquiry form (emails via Resend)     |
 | `/training`    | Personal training, credentials, adult & junior  |
 | `/about`       | Ryan's story, Forbes, Sofia, the facility       |
 | `/contact`     | Hours, form, map placeholder, appointment info  |
@@ -41,7 +42,7 @@ Search the codebase for `[REPLACE]` and `[PERSONALIZE THIS]` tags. Here's everyt
 - **Logo** — Replace text logo in Header and Footer with actual logo image
 - **All placeholder images** — Replace Unsplash URLs with real photography (each image has a comment describing what the shot should show and its ideal aspect ratio)
 - **Google Maps embed** — Replace the map placeholder on `/contact` with an actual Google Maps iframe
-- **Contact form** — Connect to Formspree, Netlify Forms, or a custom API endpoint
+- **Contact form & join form** — Add `RESEND_API_KEY` and `CONTACT_EMAIL` env vars in Vercel (see Deployment section)
 - **Forbes article link** — Add link to the actual Forbes article on `/about`
 - **OG image** — Create and add an Open Graph image for social sharing
 
@@ -76,6 +77,11 @@ src/
 │   ├── layout.tsx          # Root layout with Header/Footer, fonts
 │   ├── page.tsx            # Home page
 │   ├── globals.css         # Base styles, scrollbar, selection
+│   ├── actions/
+│   │   └── inquiry.ts      # Server Action — sends email via Resend for /join and /contact forms
+│   ├── join/
+│   │   ├── layout.tsx      # SEO metadata
+│   │   └── page.tsx        # Membership inquiry form
 │   ├── lessons/
 │   │   ├── layout.tsx      # SEO metadata
 │   │   └── page.tsx
@@ -107,12 +113,24 @@ src/
 
 ## Deployment
 
-Deploy to Vercel, Netlify, or any platform that supports Next.js:
+Deployed on Vercel. The app runs as a full Next.js server (not static export), so serverless functions are active.
 
 ```bash
 npm run build   # Production build
 npm start       # Production server
 ```
+
+### Required Environment Variables
+
+Set these in the Vercel project settings (Settings → Environment Variables):
+
+| Variable | Description |
+|---|---|
+| `RESEND_API_KEY` | From your [Resend dashboard](https://resend.com) — used to send form submission emails |
+| `CONTACT_EMAIL` | The email address that receives membership and contact form submissions |
+| `RESEND_FROM_EMAIL` | Optional. Set once you verify your domain in Resend (e.g. `Game Plan <hello@gameplangolf.com>`). Until then, emails send from `onboarding@resend.dev`. |
+
+Forms (`/join` and `/contact`) will silently fail until `RESEND_API_KEY` and `CONTACT_EMAIL` are set.
 
 ## Design Decisions
 
