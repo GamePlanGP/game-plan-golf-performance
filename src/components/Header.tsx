@@ -36,13 +36,12 @@ export default function Header() {
       >
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-heading font-bold text-lg md:text-xl text-white tracking-tight"
-          >
-            {/* [REPLACE] Replace with actual logo image */}
-            <span className="text-brand-green">Game Plan</span>{" "}
-            <span className="hidden sm:inline">Golf Performance</span>
+          <Link href="/" className="flex items-center" aria-label="Game Plan Golf Performance">
+            <img
+              src="/images/logo-header.svg"
+              alt="Game Plan Golf Performance"
+              className="h-12 md:h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}

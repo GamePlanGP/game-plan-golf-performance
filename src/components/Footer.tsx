@@ -19,13 +19,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            {/* [REPLACE] Replace with actual logo image */}
-            <Link
-              href="/"
-              className="font-heading font-bold text-lg text-white"
-            >
-              <span className="text-brand-green">Game Plan</span> Golf
-              Performance
+            <Link href="/" aria-label="Game Plan Golf Performance">
+              <img
+                src="/images/logo.svg"
+                alt="Game Plan Golf Performance"
+                className="h-40 w-auto"
+              />
             </Link>
             <p className="text-brand-gray-400 text-sm mt-3 leading-relaxed">
               {SITE_TAGLINE}
