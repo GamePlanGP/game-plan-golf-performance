@@ -10,7 +10,6 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
-    interest: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);

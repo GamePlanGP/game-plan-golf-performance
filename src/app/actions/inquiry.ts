@@ -14,7 +14,6 @@ export async function submitInquiry(
   const email = (formData.get("email") as string)?.trim();
   const phone = (formData.get("phone") as string)?.trim();
   const message = (formData.get("message") as string)?.trim();
-  const interest = (formData.get("interest") as string)?.trim();
 
   if (!name || !email) {
     return { success: false, error: "Name and email are required." };
@@ -29,7 +28,6 @@ export async function submitInquiry(
     `<tr><td style="padding:8px 0;color:#888;width:120px">Name</td><td style="padding:8px 0;color:#fff">${name}</td></tr>`,
     `<tr><td style="padding:8px 0;color:#888">Email</td><td style="padding:8px 0;color:#fff"><a href="mailto:${email}" style="color:#127055">${email}</a></td></tr>`,
     phone ? `<tr><td style="padding:8px 0;color:#888">Phone</td><td style="padding:8px 0;color:#fff">${phone}</td></tr>` : "",
-    interest ? `<tr><td style="padding:8px 0;color:#888">Interest</td><td style="padding:8px 0;color:#fff">${interest}</td></tr>` : "",
     message ? `<tr><td style="padding:8px 0;color:#888;vertical-align:top">Message</td><td style="padding:8px 0;color:#fff">${message.replace(/\n/g, "<br>")}</td></tr>` : "",
   ]
     .filter(Boolean)
