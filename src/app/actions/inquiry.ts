@@ -46,7 +46,7 @@ export async function submitInquiry(
   try {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? "Game Plan <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL ?? "owner@gameplangolf.com",
+      to: process.env.CONTACT_EMAIL ?? "info@gameplangp.com",
       replyTo: email,
       subject,
       html,
