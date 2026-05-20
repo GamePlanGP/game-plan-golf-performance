@@ -160,54 +160,30 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div>
-                        <label
-                          htmlFor="phone"
-                          className="block text-sm font-medium text-brand-gray-300 mb-1.5"
-                        >
-                          Phone{" "}
-                          <span className="text-brand-gray-500">
-                            (optional)
-                          </span>
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          className={inputClasses}
-                          placeholder="(555) 000-0000"
-                          value={formState.phone}
-                          onChange={(e) =>
-                            setFormState({
-                              ...formState,
-                              phone: e.target.value,
-                            })
-                          }
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="interest"
-                          className="block text-sm font-medium text-brand-gray-300 mb-1.5"
-                        >
-                          Subject
-                        </label>
-                        <input
-                          type="text"
-                          id="interest"
-                          name="interest"
-                          className={inputClasses}
-                          value={formState.interest}
-                          onChange={(e) =>
-                            setFormState({
-                              ...formState,
-                              interest: e.target.value,
-                            })
-                          }
-                          placeholder="What can we help you with?"
-                        />
-                      </div>
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-brand-gray-300 mb-1.5"
+                      >
+                        Phone{" "}
+                        <span className="text-brand-gray-500">
+                          (optional)
+                        </span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        className={inputClasses}
+                        placeholder="(555) 000-0000"
+                        value={formState.phone}
+                        onChange={(e) =>
+                          setFormState({
+                            ...formState,
+                            phone: e.target.value,
+                          })
+                        }
+                      />
                     </div>
 
                     <div>
@@ -222,7 +198,7 @@ export default function ContactPage() {
                         name="message"
                         rows={4}
                         className={inputClasses}
-                        placeholder="Tell us about your goals, experience level, or any questions you have."
+                        placeholder="How can we make you a better golfer?"
                         value={formState.message}
                         onChange={(e) =>
                           setFormState({
