@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/Button";
@@ -252,6 +253,23 @@ export default function Home() {
               <Button href="/lessons" variant="secondary" size="lg">
                 Book a Lesson
               </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="mt-5 inline-block"
+            >
+              <Link
+                href="/memberships"
+                className="inline-flex items-center gap-3 bg-brand-green/10 border border-brand-green/30 rounded-full pl-2 pr-5 py-2 hover:bg-brand-green/20 hover:border-brand-green/50 transition-colors duration-200"
+              >
+                <span className="bg-brand-green text-white text-sm font-bold px-3 py-1 rounded-full">
+                  $149/mo
+                </span>
+                <span className="text-brand-gray-300 text-sm">Unlimited practice membership</span>
+              </Link>
             </motion.div>
           </div>
         </div>
