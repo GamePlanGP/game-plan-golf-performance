@@ -1,9 +1,12 @@
+import Image from "next/image";
 import FadeIn from "./FadeIn";
 
 interface TestimonialCardProps {
   quote: string;
   author: string;
   detail?: string;
+  href?: string;
+  image?: string;
   delay?: number;
 }
 
@@ -29,6 +32,8 @@ export default function TestimonialCard({
   quote,
   author,
   detail,
+  href,
+  image,
   delay = 0,
 }: TestimonialCardProps) {
   return (
@@ -41,13 +46,34 @@ export default function TestimonialCard({
         <blockquote className="text-white leading-relaxed flex-1 text-base md:text-lg font-medium">
           &ldquo;{quote}&rdquo;
         </blockquote>
-        <div className="mt-6 pt-4 border-t border-brand-gray-800">
-          <cite className="text-brand-green font-semibold not-italic text-sm tracking-wide">
-            — {author}
-          </cite>
-          {detail && (
-            <p className="text-brand-gray-500 text-xs mt-1">{detail}</p>
+        <div className="mt-6 pt-4 border-t border-brand-gray-800 flex items-center gap-3">
+          {image && (
+            <Image
+              src={image}
+              alt={author}
+              width={40}
+              height={40}
+              className="rounded-full shrink-0"
+            />
           )}
+          <div>
+            <cite className="text-brand-green font-semibold not-italic text-sm tracking-wide">
+              {author}
+            </cite>
+            {detail &&
+              (href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-gray-500 text-xs mt-0.5 hover:text-brand-green transition-colors duration-200 block"
+                >
+                  {detail}
+                </a>
+              ) : (
+                <p className="text-brand-gray-500 text-xs mt-0.5">{detail}</p>
+              ))}
+          </div>
         </div>
       </div>
     </FadeIn>

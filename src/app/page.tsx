@@ -438,21 +438,27 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <TestimonialCard
-              quote="Ryan's facility is equipped with the most advanced technology in the game, eliminating any guesswork about what's happening in your swing."
-              author="Kris"
+              quote="I have had a couple great sessions with Ryan. His expertise in both the swing and sequence of how power is generated was very helpful in helping me unlock potential. He showed me with the use of pressure plates where I was bleeding energy. I saw gains while I was there and even more since then. My index has dropped from a 7.1 to a 4.9 in just a few weeks."
+              author="Jose Miraflor"
               detail="Google Review"
+              href="https://maps.app.goo.gl/Cb4Dk4EAGvTW8Uss6"
+              image="/testimonials/jose-miraflor.jpg"
               delay={0}
             />
             <TestimonialCard
-              quote="Ryan's customized training sessions have helped me get stronger, improve my balance, and add real speed to my swing. Even more importantly, he's helped me work through past injuries and turn weaknesses into new strengths."
-              author="Jim"
+              quote="Ryan and Christian have created an outstanding facility that makes you feel welcome the moment you walk through the door. They take the time to walk you through the technology, ensuring you get the most out of each session. It's a top-tier environment that's not only relaxing but also a great place to focus on improving your game."
+              author="Ian Corso"
               detail="Google Review"
+              href="https://maps.app.goo.gl/Ahkv8pZuTFdy5vd97"
+              image="/testimonials/ian-corso.jpg"
               delay={0.1}
             />
             <TestimonialCard
-              quote="The set up and equipment has really helped me analyze my swing and make improvements. Would highly recommend if you are interested in improving your game!"
-              author="Steve"
+              quote="I have been a member for several months and it has been a great experience. Not only are Ryan and Christian good people, but the set up and equipment has really helped me analyze my swing and make improvements. Would highly recommend if you are interested in improving your game!"
+              author="Steven Gordon"
               detail="Google Review"
+              href="https://maps.app.goo.gl/5XZCPVvhKQocGR7n9"
+              image="/testimonials/steven-gordon.jpg"
               delay={0.2}
             />
           </div>
