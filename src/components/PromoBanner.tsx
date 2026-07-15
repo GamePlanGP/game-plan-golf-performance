@@ -40,7 +40,7 @@ export default function PromoBanner({ href }: PromoBannerProps) {
             </motion.span>
 
             <h2 className="font-heading text-white font-bold tracking-tight text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.05]">
-              Train With a Former Tour Pro —{" "}
+              Elite Coaching for Every Golfer —{" "}
               <span className="whitespace-nowrap">
                 Now{" "}
                 <span className="relative inline-block">
@@ -52,21 +52,13 @@ export default function PromoBanner({ href }: PromoBannerProps) {
             </h2>
 
             <p className="mt-3 text-white/90 text-sm md:text-base leading-relaxed">
-              Christian Chang competed as a professional golfer and is{" "}
-              <span className="font-semibold text-white">
-                Golf Level 3 TPI Certified
-              </span>{" "}
-              &mdash; a rare expert in{" "}
-              <span className="font-semibold text-white">
-                ground reaction forces
-              </span>{" "}
-              who reads exactly how you generate power from the ground up. Lock
-              in his coaching before this rate is gone.
-            </p>
-
-            <p className="mt-3 text-white/80 text-xs md:text-sm font-medium">
-              Buy as many sessions as you&apos;d like, up front &middot; Each
-              lesson valid for 3 months after purchase
+              Christian Chang is an{" "}
+              <span className="font-semibold text-white">elite instructor</span>{" "}
+              who helps golfers of every level get better &mdash; building the
+              swing that&apos;s right for{" "}
+              <span className="font-semibold text-white">you</span>, not a
+              one-size-fits-all method. Golf Level 3 TPI Certified and an expert
+              in ground reaction forces.
             </p>
           </div>
 

@@ -69,7 +69,7 @@ const instructors: Instructor[] = [
       price: "$99",
       unit: "/session",
       detail:
-        "Buy as many sessions as you'd like, up front. Lessons expire 3 months after purchase.",
+        "Elite, personalized coaching for every level — building the swing that's right for you, now just $99 a session.",
     },
     lessons: [
       {
