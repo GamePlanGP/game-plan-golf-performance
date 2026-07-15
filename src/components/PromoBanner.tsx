@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import FadeIn from "./FadeIn";
+import { motion } from "framer-motion";
 
 interface PromoBannerProps {
   href: string;
@@ -7,31 +9,94 @@ interface PromoBannerProps {
 
 export default function PromoBanner({ href }: PromoBannerProps) {
   return (
-    <section className="bg-brand-green py-6 md:py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <div>
-              <p className="text-white/80 text-xs font-bold uppercase tracking-widest">
+    <section className="relative overflow-hidden bg-gradient-to-br from-brand-green-muted via-brand-green to-brand-green-hover pt-24 md:pt-28 pb-8 md:pb-10">
+      {/* Animated glow */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute -top-1/2 right-0 w-[600px] h-[600px] rounded-full bg-white/10 blur-3xl pointer-events-none"
+        animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.15, 1] }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10">
+          {/* Copy */}
+          <div className="text-center lg:text-left max-w-2xl">
+            <motion.span
+              className="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full pl-2.5 pr-4 py-1 mb-4"
+              initial={{ opacity: 0, y: -8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <motion.span
+                className="w-2 h-2 rounded-full bg-white"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ repeat: Infinity, duration: 1.8 }}
+              />
+              <span className="text-white text-xs font-bold uppercase tracking-widest">
                 Limited-Time Offer
-              </p>
-              <p className="text-white font-heading text-xl md:text-2xl font-bold mt-1">
-                $99 / Session with Christian Chang
-              </p>
-              <p className="text-white/90 text-sm mt-1 max-w-xl">
-                Golf Level 3 TPI Certified &middot; Ground Reaction Force
-                Expert. Buy as many sessions as you&apos;d like, up front
-                &mdash; lessons expire 3 months after purchase.
-              </p>
-            </div>
+              </span>
+            </motion.span>
+
+            <h2 className="font-heading text-white font-bold tracking-tight text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.05]">
+              Train With a Former Tour Pro —{" "}
+              <span className="whitespace-nowrap">
+                Now{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">$99</span>
+                  <span className="absolute inset-x-0 bottom-1 h-3 bg-white/25 -z-0 rounded-sm" />
+                </span>{" "}
+                a Session
+              </span>
+            </h2>
+
+            <p className="mt-3 text-white/90 text-sm md:text-base leading-relaxed">
+              Christian Chang competed as a professional golfer and is{" "}
+              <span className="font-semibold text-white">
+                Golf Level 3 TPI Certified
+              </span>{" "}
+              &mdash; a rare expert in{" "}
+              <span className="font-semibold text-white">
+                ground reaction forces
+              </span>{" "}
+              who reads exactly how you generate power from the ground up. Lock
+              in his coaching before this rate is gone.
+            </p>
+
+            <p className="mt-3 text-white/80 text-xs md:text-sm font-medium">
+              Buy as many sessions as you&apos;d like, up front &middot; Each
+              lesson valid for 3 months after purchase
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="shrink-0 flex flex-col items-center gap-2">
             <Link
               href={href}
-              className="inline-flex items-center justify-center shrink-0 font-semibold tracking-wide uppercase rounded transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] bg-white text-brand-green hover:bg-brand-gray-100 px-6 py-3 text-sm"
+              className="inline-flex items-center justify-center gap-2 font-bold tracking-wide uppercase rounded-lg bg-white text-brand-green text-sm md:text-base px-7 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_50px_rgba(0,0,0,0.35)] active:translate-y-0 active:scale-[0.98]"
             >
-              Book With Christian
+              Claim the $99 Rate
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
             </Link>
+            <span className="text-white/70 text-xs">
+              No membership required
+            </span>
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

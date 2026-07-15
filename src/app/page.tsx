@@ -182,6 +182,9 @@ export default function Home() {
 
   return (
     <>
+      {/* ─── Limited-Time Promo ─── */}
+      <PromoBanner href="/lessons#instructors" />
+
       {/* ─── Hero ─── */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         {/* Parallax background image */}
@@ -289,9 +292,6 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
-
-      {/* ─── Limited-Time Promo ─── */}
-      <PromoBanner href="/lessons#instructors" />
 
       {/* ─── Credibility Bar ─── */}
       <section className="bg-brand-gray-950 border-y border-brand-gray-800">

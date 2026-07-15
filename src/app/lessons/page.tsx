@@ -115,8 +115,11 @@ const techStack = [
 export default function LessonsPage() {
   return (
     <>
+      {/* Limited-Time Promo */}
+      <PromoBanner href="#instructors" />
+
       {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <section className="relative pt-20 pb-20 md:pt-24 md:pb-28 overflow-hidden">
         <div className="absolute inset-0">
           {/*
             [REPLACE] Background: Coach working 1:1 with a golfer mid-lesson
@@ -161,9 +164,6 @@ export default function LessonsPage() {
           </div>
         </div>
       </section>
-
-      {/* Limited-Time Promo */}
-      <PromoBanner href="#instructors" />
 
       {/* Methodology */}
       <section className="py-20 md:py-28 bg-brand-dark">
