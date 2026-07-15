@@ -16,6 +16,7 @@ const membership = {
     "Members only — private facility, no public walk-ins",
     "App-based booking & reservations",
     "No contract — cancel anytime",
+    "Must be 18 years or older to be a practice member",
   ],
 };
 
