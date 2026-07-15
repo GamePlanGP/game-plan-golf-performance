@@ -4,6 +4,89 @@ import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
+import PromoBanner from "@/components/PromoBanner";
+
+interface InstructorLesson {
+  label: string;
+  price: string;
+  originalPrice?: string;
+  href: string;
+}
+
+interface Instructor {
+  name: string;
+  role: string;
+  bio: string;
+  availability: string;
+  credentials: string[];
+  promo?: {
+    headline: string;
+    price: string;
+    unit: string;
+    detail: string;
+  };
+  lessons: InstructorLesson[];
+}
+
+const instructors: Instructor[] = [
+  {
+    name: "Ryan Faust",
+    role: "Founder & Head Golf Performance Coach",
+    bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
+    availability: "Mon & Wed mornings · Tue & Thu afternoons",
+    credentials: [
+      "Swing Catalyst Ambassador",
+      "Swing Catalyst Level 2 Certified",
+      "TPI Certified — Power 2 & Fitness 2",
+      "NASM Certified Personal Trainer",
+    ],
+    lessons: [
+      {
+        label: "Adult Lesson",
+        price: "$150",
+        href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37304",
+      },
+      {
+        label: "Junior Lesson",
+        price: "$135",
+        href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37311",
+      },
+    ],
+  },
+  {
+    name: "Christian Chang",
+    role: "Lead Instructor",
+    bio: "Christian grew up playing golf in San Diego before turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits. He brings that competitive, data-informed edge to every lesson — tailoring each session to how the individual golfer moves and what they're working toward. He is Golf Level 3 TPI Certified and an expert in ground reaction forces, reading force plate data to pinpoint exactly how you generate power from the ground up.",
+    availability: "Mon & Wed afternoons · Thu mornings · Fri & Sat 8am–4pm",
+    credentials: [
+      "Swing Catalyst Level 2 Certified",
+      "Golf Level 3 TPI Certified",
+      "Ground Reaction Force Expert",
+      "Former Professional Golfer",
+    ],
+    promo: {
+      headline: "Limited-Time Offer",
+      price: "$99",
+      unit: "/session",
+      detail:
+        "Buy as many sessions as you'd like, up front. Lessons expire 3 months after purchase.",
+    },
+    lessons: [
+      {
+        label: "Adult Lesson",
+        price: "$99",
+        originalPrice: "$150",
+        href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37304",
+      },
+      {
+        label: "Junior Lesson",
+        price: "$99",
+        originalPrice: "$135",
+        href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37311",
+      },
+    ],
+  },
+];
 
 const techStack = [
   {
@@ -79,6 +162,9 @@ export default function LessonsPage() {
         </div>
       </section>
 
+      {/* Limited-Time Promo */}
+      <PromoBanner href="#instructors" />
+
       {/* Methodology */}
       <section className="py-20 md:py-28 bg-brand-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,62 +236,23 @@ export default function LessonsPage() {
           </FadeIn>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            {[
-              {
-                name: "Ryan Faust",
-                role: "Founder & Head Golf Performance Coach",
-                bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
-                availability: "Mon & Wed mornings · Tue & Thu afternoons",
-                credentials: [
-                  "Swing Catalyst Ambassador",
-                  "Swing Catalyst Level 2 Certified",
-                  "TPI Certified — Power 2 & Fitness 2",
-                  "NASM Certified Personal Trainer",
-                ],
-                lessons: [
-                  {
-                    label: "Adult Lesson",
-                    price: "$150",
-                    href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37304",
-                  },
-                  {
-                    label: "Junior Lesson",
-                    price: "$135",
-                    href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37311",
-                  },
-                ],
-              },
-              {
-                name: "Christian Chang",
-                role: "Lead Instructor",
-                bio: "Christian grew up playing golf in San Diego before turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits. He brings that competitive, data-informed edge to every lesson — tailoring each session to how the individual golfer moves and what they're working toward.",
-                availability: "Mon & Wed afternoons · Thu mornings · Fri & Sat 8am–4pm",
-                credentials: [
-                  "Swing Catalyst Level 2 Certified",
-                  "TPI Certified - Level 3 Golf",
-                  "Former Professional Golfer",
-                ],
-                lessons: [
-                  {
-                    label: "Adult Lesson",
-                    price: "$150",
-                    href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37304",
-                  },
-                  {
-                    label: "Junior Lesson",
-                    price: "$135",
-                    href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37311",
-                  },
-                  {
-                    label: "4-Pack Lessons",
-                    price: "$540",
-                    href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/38022",
-                  },
-                ],
-              },
-            ].map((instructor, i) => (
+            {instructors.map((instructor, i) => (
               <FadeIn key={instructor.name} delay={0.1 * i}>
-                <div className="bg-brand-gray-950 border border-brand-gray-800 rounded-lg overflow-hidden">
+                <div
+                  className={`bg-brand-gray-950 border rounded-lg overflow-hidden ${
+                    instructor.promo
+                      ? "border-brand-green"
+                      : "border-brand-gray-800"
+                  }`}
+                >
+                  {instructor.promo && (
+                    <div className="bg-brand-green text-center py-2 px-4">
+                      <p className="text-white text-xs font-bold uppercase tracking-wider">
+                        {instructor.promo.headline} &mdash; {instructor.promo.price}
+                        {instructor.promo.unit}
+                      </p>
+                    </div>
+                  )}
                   <div className="p-5">
                     <h3 className="font-heading text-2xl font-bold text-white">
                       {instructor.name}
@@ -235,6 +282,16 @@ export default function LessonsPage() {
                         <p className="text-white text-sm mt-0.5">{instructor.availability}</p>
                       </div>
                     </div>
+                    {instructor.promo && (
+                      <div className="mt-4 flex items-start gap-3 bg-brand-green/10 border border-brand-green/30 rounded-lg px-4 py-3">
+                        <svg className="w-4 h-4 text-brand-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <p className="text-brand-green text-sm font-semibold">
+                          {instructor.promo.detail}
+                        </p>
+                      </div>
+                    )}
                     <div className="mt-5 flex flex-col gap-2">
                       {instructor.lessons.map((lesson) => (
                         <a
@@ -245,7 +302,14 @@ export default function LessonsPage() {
                           className="flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
                         >
                           <span>{lesson.label}</span>
-                          <span className="text-brand-green">{lesson.price}</span>
+                          <span className="flex items-center gap-2">
+                            {lesson.originalPrice && (
+                              <span className="text-brand-gray-500 text-xs line-through">
+                                {lesson.originalPrice}
+                              </span>
+                            )}
+                            <span className="text-brand-green">{lesson.price}</span>
+                          </span>
                         </a>
                       ))}
                     </div>

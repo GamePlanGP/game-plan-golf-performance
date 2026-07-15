@@ -10,6 +10,7 @@ import SectionHeader from "@/components/SectionHeader";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import PromoBanner from "@/components/PromoBanner";
 import { CITIES_SERVED } from "@/lib/constants";
 
 /* ─── Icon components ─── */
@@ -288,6 +289,9 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
+
+      {/* ─── Limited-Time Promo ─── */}
+      <PromoBanner href="/lessons#instructors" />
 
       {/* ─── Credibility Bar ─── */}
       <section className="bg-brand-gray-950 border-y border-brand-gray-800">
