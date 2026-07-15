@@ -1,6 +1,6 @@
 # Game Plan Golf Performance — Marketing Website
 
-Marketing website for Game Plan Golf Performance, a data-driven golf performance facility in San Marcos, CA.
+Marketing website for Game Plan Golf Performance, a data-driven golf performance facility in San Marcos, CA. 
 
 ## Tech Stack
 
