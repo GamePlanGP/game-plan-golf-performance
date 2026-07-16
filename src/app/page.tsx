@@ -10,6 +10,7 @@ import SectionHeader from "@/components/SectionHeader";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import PromoBanner from "@/components/PromoBanner";
 import { CITIES_SERVED } from "@/lib/constants";
 
 /* ─── Icon components ─── */
@@ -181,6 +182,9 @@ export default function Home() {
 
   return (
     <>
+      {/* ─── Limited-Time Promo ─── */}
+      <PromoBanner href="/lessons#instructors" />
+
       {/* ─── Hero ─── */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         {/* Parallax background image */}
