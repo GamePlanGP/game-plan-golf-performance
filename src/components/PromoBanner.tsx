@@ -41,24 +41,20 @@ export default function PromoBanner({ href }: PromoBannerProps) {
 
             <h2 className="font-heading text-white font-bold tracking-tight text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.05]">
               Elite Coaching for Every Golfer —{" "}
-              <span className="whitespace-nowrap">
-                Now{" "}
-                <span className="relative inline-block">
-                  <span className="relative z-10">$99</span>
-                  <span className="absolute inset-x-0 bottom-1 h-3 bg-white/25 -z-0 rounded-sm" />
-                </span>{" "}
-                a Session
-              </span>
+              <span className="whitespace-nowrap">Now $99 a Session</span>
             </h2>
 
             <p className="mt-3 text-white/90 text-sm md:text-base leading-relaxed">
-              Christian Chang is an{" "}
-              <span className="font-semibold text-white">elite instructor</span>{" "}
-              who helps golfers of every level get better &mdash; building the
-              swing that&apos;s right for{" "}
+              Christian helps golfers of every level get better &mdash; building
+              the swing that&apos;s right for{" "}
               <span className="font-semibold text-white">you</span>, not a
-              one-size-fits-all method. Golf Level 3 TPI Certified and an expert
-              in ground reaction forces.
+              one-size-fits-all method. Golf Level 3 TPI Certified with deep
+              expertise in{" "}
+              <span className="font-semibold text-white">
+                ground reaction forces
+              </span>
+              , he uses force plate data to build the most efficient movement
+              pattern for each golfer.
             </p>
           </div>
 

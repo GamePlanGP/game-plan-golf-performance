@@ -56,7 +56,7 @@ const instructors: Instructor[] = [
   {
     name: "Christian Chang",
     role: "Lead Instructor",
-    bio: "Christian grew up playing golf in San Diego before turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits. He brings that competitive, data-informed edge to every lesson — tailoring each session to how the individual golfer moves and what they're working toward. He is Golf Level 3 TPI Certified and an expert in ground reaction forces, reading force plate data to pinpoint exactly how you generate power from the ground up.",
+    bio: "Christian grew up playing golf in San Diego before turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits. He brings that competitive, data-informed edge to every lesson — tailoring each session to how the individual golfer moves and what they're working toward. Golf Level 3 TPI Certified with deep expertise in ground reaction forces, he uses force plate data to build an efficient movement pattern tailored to each golfer.",
     availability: "Mon & Wed afternoons · Thu mornings · Fri & Sat 8am–4pm",
     credentials: [
       "Swing Catalyst Level 2 Certified",
