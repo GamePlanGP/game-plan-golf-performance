@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import FadeIn from "@/components/FadeIn";
 import { HOURS, ADDRESS, PHONE, EMAIL } from "@/lib/constants";
 import { submitInquiry } from "@/app/actions/inquiry";
@@ -16,11 +16,19 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Records when the form became interactive, so the server can reject
+  // submissions that arrive implausibly fast (a sign of automation).
+  const mountedAtRef = useRef(0);
+  useEffect(() => {
+    mountedAtRef.current = Date.now();
+  }, []);
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError("");
     const formData = new FormData(e.currentTarget);
+    formData.set("form_elapsed_ms", String(Date.now() - mountedAtRef.current));
     const result = await submitInquiry("contact", formData);
     if (result.success) {
       setSubmitted(true);
@@ -219,6 +227,28 @@ export default function ContactPage() {
                     >
                       {loading ? "Sending…" : "Send Message"}
                     </button>
+
+                    {/*
+                      Honeypot — hidden from real visitors (off-screen,
+                      untabbable, and hidden from assistive tech). Bots that
+                      auto-fill every field will populate it, and the server
+                      silently drops those submissions. Do not remove.
+                    */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
+                    >
+                      <label htmlFor="company_website">
+                        Company website (leave blank)
+                      </label>
+                      <input
+                        type="text"
+                        id="company_website"
+                        name="company_website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
                   </form>
                 )}
               </div>
