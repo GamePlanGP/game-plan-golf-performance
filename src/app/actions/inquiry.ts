@@ -6,10 +6,30 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export type InquiryResult = { success: true } | { success: false; error: string };
 
+// Minimum time (ms) a genuine visitor takes to fill out the form. Anything
+// faster is almost certainly an automated submission.
+const MIN_FILL_TIME_MS = 2000;
+
 export async function submitInquiry(
   type: "membership" | "contact",
   formData: FormData
 ): Promise<InquiryResult> {
+  // ── Bot protection ──
+  // Honeypot: a hidden field no human can see or tab to. Bots that fill in
+  // every field will populate it. We accept the submission silently (so the
+  // bot gets no signal) but never send the email.
+  const honeypot = (formData.get("company_website") as string)?.trim();
+  if (honeypot) {
+    return { success: true };
+  }
+  // Timing trap: our form stamps how long the visitor spent before submitting.
+  // A missing or implausibly fast value indicates automation.
+  const elapsedRaw = formData.get("form_elapsed_ms");
+  const elapsed = elapsedRaw ? Number(elapsedRaw) : NaN;
+  if (!Number.isFinite(elapsed) || elapsed < MIN_FILL_TIME_MS) {
+    return { success: true };
+  }
+
   const name = (formData.get("name") as string)?.trim();
   const email = (formData.get("email") as string)?.trim();
   const phone = (formData.get("phone") as string)?.trim();
