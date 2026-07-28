@@ -53,14 +53,15 @@ export default function MembershipsPage() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-              Practice With Purpose
+              Everything You Need to Get Better. Nothing You Don&apos;t.
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="mt-6 text-lg md:text-xl text-brand-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Unlimited GC Quad bay time with high-speed video. Fiberbuilt mats.
-              Open 5am to 10pm, every day. Members only — your space, your
-              community, real data on every shot.
+              Unlimited GC Quad bay time with high-speed video and full launch
+              monitor data. Open 5am to 10pm, every day. Stop paying for
+              expensive add-ons — everything you need to get better is in one
+              affordable membership.
             </p>
           </FadeIn>
         </div>
