@@ -32,7 +32,7 @@ const entertainmentModel = [
 // What we put every dollar toward — the things that actually move your game.
 const gamePlanModel = [
   "GC Quad launch monitors with tour-level ball and club data",
-  "High-speed video and Swing Catalyst force plates for real feedback",
+  "High-speed video in every bay for honest, frame-by-frame feedback",
   "Unlimited private practice — no foursomes, no distractions",
   "One affordable membership — no upsells, no add-ons that don't matter",
 ];
