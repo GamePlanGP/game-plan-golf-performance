@@ -16,6 +16,12 @@ export function createMetadata({
 }): Metadata {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
   const desc = description || SITE_DESCRIPTION;
+  const ogImage = {
+    url: `${BASE_URL}/og-image.png`,
+    width: 1200,
+    height: 630,
+    alt: SITE_NAME,
+  };
 
   const baseKeywords = [
     "golf lessons San Marcos",
@@ -31,6 +37,7 @@ export function createMetadata({
     title: fullTitle,
     description: desc,
     keywords: [...baseKeywords, ...keywords],
+    metadataBase: new URL(BASE_URL),
     openGraph: {
       title: fullTitle,
       description: desc,
@@ -38,13 +45,13 @@ export function createMetadata({
       siteName: SITE_NAME,
       locale: "en_US",
       type: "website",
-      // [REPLACE] Add images array with OG image when available
-      // images: [{ url: `${BASE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description: desc,
+      images: [ogImage.url],
     },
     robots: {
       index: true,
