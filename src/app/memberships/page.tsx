@@ -21,6 +21,22 @@ const membership = {
   ],
 };
 
+// What other venues charge premium prices for — none of which lowers a score.
+const entertainmentModel = [
+  "Premium prices for foursomes and group simulator bays",
+  "Outside play, food, and drinks bundled into your bill",
+  "Social nights and events you pay for whether you use them or not",
+  "Screens and simulators built for entertainment, not measurement",
+];
+
+// What we put every dollar toward — the things that actually move your game.
+const gamePlanModel = [
+  "GC Quad launch monitors with tour-level ball and club data",
+  "High-speed video and Swing Catalyst force plates for real feedback",
+  "Unlimited private practice — no foursomes, no distractions",
+  "One affordable membership — no upsells, no add-ons that don't matter",
+];
+
 function CheckIcon() {
   return (
     <svg
@@ -35,6 +51,25 @@ function CheckIcon() {
         strokeLinejoin="round"
         strokeWidth={2}
         d="M5 13l4 4L19 7"
+      />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg
+      className="w-5 h-5 text-brand-gray-600 shrink-0 mt-0.5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M6 18L18 6M6 6l12 12"
       />
     </svg>
   );
@@ -108,6 +143,56 @@ export default function MembershipsPage() {
                 >
                   Become a Member
                 </Button>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Differentiation — Built to Get You Better */}
+      <section className="py-16 md:py-24 bg-brand-dark">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <span className="inline-block text-brand-green text-sm font-semibold tracking-widest uppercase mb-4">
+                The Difference
+              </span>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-white">
+                Built to Get You Better — Not to Entertain You
+              </h2>
+              <p className="mt-4 text-brand-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+                Other venues charge premium prices for foursomes, outside play,
+                food and drinks, and social nights out. That&apos;s a great time
+                — but none of it lowers your scores. We put every dollar into the
+                technology and feedback that actually moves your game.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-brand-gray-950 border border-brand-gray-800 rounded-lg p-8">
+                <p className="text-brand-gray-400 text-xs font-bold uppercase tracking-wider mb-6">
+                  The Entertainment Model
+                </p>
+                <ul className="space-y-4">
+                  {entertainmentModel.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm">
+                      <XIcon />
+                      <span className="text-brand-gray-400">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-brand-green/5 border border-brand-green/40 rounded-lg p-8">
+                <p className="text-brand-green text-xs font-bold uppercase tracking-wider mb-6">
+                  The Game Plan Model
+                </p>
+                <ul className="space-y-4">
+                  {gamePlanModel.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm">
+                      <CheckIcon />
+                      <span className="text-brand-gray-200">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </FadeIn>
