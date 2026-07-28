@@ -342,7 +342,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="What We Do"
             title="Three Pillars of Better Golf"
-            description="Every golfer's path to improvement is different. We meet you where you are with coaching, practice, and physical training — all powered by data."
+            description="Every golfer's path to improvement is different. We meet you where you are with coaching, practice, and physical training — all powered by data. No foursomes, no bar tab, no upsells. Just what actually gets you better."
           />
 
           <div className="grid md:grid-cols-3 gap-6">
