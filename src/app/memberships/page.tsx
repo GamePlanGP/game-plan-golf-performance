@@ -163,8 +163,10 @@ export default function MembershipsPage() {
               <p className="mt-4 text-brand-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
                 Other venues charge premium prices for foursomes, outside play,
                 food and drinks, and social nights out. That&apos;s a great time
-                — but none of it lowers your scores. We put every dollar into the
-                technology and feedback that actually moves your game.
+                — but none of it lowers your scores. We put every dollar of
+                investment into the technology and feedback that actually helps
+                you improve your game and pass the savings direct to your
+                membership cost.
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
