@@ -8,6 +8,7 @@ const membership = {
   period: "/mo",
   features: [
     "Unlimited GC Quad bay time — practice as much as you want",
+    "Unlimited putting practice at our putting station — includes PuttrCo access",
     "High-speed video in every bay",
     "Open 5:00 AM – 10:00 PM, every day",
     "Full launch monitor data",
@@ -58,8 +59,9 @@ export default function MembershipsPage() {
           <FadeIn delay={0.2}>
             <p className="mt-6 text-lg md:text-xl text-brand-gray-300 max-w-2xl mx-auto leading-relaxed">
               Unlimited GC Quad bay time with high-speed video. Fiberbuilt mats.
-              Open 5am to 10pm, every day. Members only — your space, your
-              community, real data on every shot.
+              Unlimited putting practice at our putting station with PuttrCo
+              access. Open 5am to 10pm, every day. Members only — your space,
+              your community, real data on every shot.
             </p>
           </FadeIn>
         </div>
