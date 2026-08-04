@@ -264,7 +264,7 @@ export default function TrainingPage() {
                   rel="noopener noreferrer"
                   className="mt-6 flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
                 >
-                  <span>8-Pack Fitness</span>
+                  <span>8-Pack Adult Fitness</span>
                   <span className="text-brand-green">$1,000</span>
                 </a>
               </div>
