@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { SITE_NAME, SITE_DESCRIPTION } from "./constants";
 
-const BASE_URL = "https://gameplangolf.com"; // [REPLACE] Update with actual domain
+const BASE_URL = "https://gameplangolfperformance.com";
 
 export function createMetadata({
   title,

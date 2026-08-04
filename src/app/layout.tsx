@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL("https://gameplangolf.com"), // [REPLACE] Update with actual domain
+  metadataBase: new URL("https://gameplangolfperformance.com"),
   openGraph: {
     title: `${SITE_NAME} | Data-Driven Golf Coaching in San Marcos, CA`,
     description: SITE_DESCRIPTION,
