@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { SITE_NAME, SITE_DESCRIPTION } from "./constants";
 
-const BASE_URL = "https://gameplangolf.com"; // [REPLACE] Update with actual domain
+const BASE_URL = "https://gameplangolfperformance.com";
 
 export function createMetadata({
   title,
@@ -17,7 +17,7 @@ export function createMetadata({
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
   const desc = description || SITE_DESCRIPTION;
   const ogImage = {
-    url: `${BASE_URL}/og-image.png`,
+    url: `${BASE_URL}/og-logo.png`,
     width: 1200,
     height: 630,
     alt: SITE_NAME,

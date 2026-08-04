@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL("https://gameplangolf.com"), // [REPLACE] Update with actual domain
+  metadataBase: new URL("https://gameplangolfperformance.com"),
   openGraph: {
     title: `${SITE_NAME} | Data-Driven Golf Coaching in San Marcos, CA`,
     description: SITE_DESCRIPTION,
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
+    images: [{ url: "/og-logo.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | Data-Driven Golf Coaching in San Marcos, CA`,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.png"],
+    images: ["/og-logo.png"],
   },
 };
 
