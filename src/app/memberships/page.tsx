@@ -88,7 +88,9 @@ export default function MembershipsPage() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-              Everything You Need to Get Better. Nothing You Don&apos;t.
+              Everything You Need to Get Better.
+              <br />
+              Nothing You Don&apos;t.
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
