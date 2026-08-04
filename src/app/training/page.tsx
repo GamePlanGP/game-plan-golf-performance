@@ -264,7 +264,7 @@ export default function TrainingPage() {
                   rel="noopener noreferrer"
                   className="mt-6 flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
                 >
-                  <span>8-Pack Fitness</span>
+                  <span>8-Pack Adult Fitness</span>
                   <span className="text-brand-green">$1,000</span>
                 </a>
               </div>
@@ -301,13 +301,13 @@ export default function TrainingPage() {
                   ))}
                 </ul>
                 <a
-                  href="https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/38151"
+                  href="https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/42706"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
                 >
-                  <span>8-Pack Junior Fitness</span>
-                  <span className="text-brand-green">$800</span>
+                  <span>Junior Fitness Session</span>
+                  <span className="text-brand-green">$135/session</span>
                 </a>
               </div>
             </FadeIn>
