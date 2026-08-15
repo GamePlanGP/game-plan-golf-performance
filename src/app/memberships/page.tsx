@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
+import FaqItem from "@/components/FaqItem";
+import { MEMBERSHIP_FAQS } from "@/lib/faqs";
 
 const membership = {
   price: "$149",
@@ -36,54 +37,6 @@ const gamePlanModel = [
   "High-speed video in every bay for honest, frame-by-frame feedback",
   "Unlimited private practice — no foursomes, no distractions",
   "One affordable membership — no upsells, no add-ons that don't matter",
-];
-
-const faqs = [
-  {
-    question: "How much is a membership and what's included?",
-    answer:
-      "Membership is $149/month and includes unlimited GC Quad bay time, unlimited putting practice at our putting station with PuttrCo access, high-speed video in every bay, full launch monitor data, and premium golf balls. There are no caps, no monthly limits, and no add-ons — everything you need to get better is included.",
-  },
-  {
-    question: "Is there a contract or long-term commitment?",
-    answer:
-      "No. Membership is month to month with no contract. There's no sign-up fee, no cancellation fee, and no year-long commitment. Pay month to month and cancel anytime. Once you cancel, you will have access for the remainder of your billing period. Each membership is on auto-renewal, and in your profile you have a quick and easy way to cancel your membership at any time throughout the month.",
-  },
-  {
-    question: "Can I pause my membership if I get injured or travel?",
-    answer:
-      "Since we are month-to-month, with no contracts, no sign-up fee, and no cancellation fees, pausing a membership is not needed. Just cancel and when you're ready to come back, purchase your membership at that time.",
-  },
-  {
-    question: "What are your hours?",
-    answer:
-      "We're open every day from 5:00 AM to 10:00 PM, so you can practice on your schedule — early mornings, late nights, weekends, whenever works for you.",
-  },
-  {
-    question: "Do I need to book a bay in advance?",
-    answer:
-      "Yes, however it is very easy. Bays and reservations are managed through our app-based booking system, so you can reserve your time in advance and know a bay is waiting for you — no waiting, no crowds. You can book immediately at the next available :15 minute increment (if it's 8:59 AM and a 9:00 AM slot is open, you can book it!).",
-  },
-  {
-    question: "Can I bring guests or is this open to the public?",
-    answer:
-      "Game Plan is a private, members-only facility with no public walk-ins. Every person in the facility is a member invested in getting better, so you never share space with parties or general-public foot traffic.",
-  },
-  {
-    question: "Is there an age requirement?",
-    answer:
-      "Yes — you must be 18 years or older to be a practice member.",
-  },
-  {
-    question: "Can I use my own golf balls?",
-    answer:
-      "Yes, you're welcome to use your own gamer ball to dial in your data with the specific ball you play. This is a major benefit of using the best-in-class GC Quad launch monitors. We just ask that the ball is new and clean — no sharpie marks that will transfer to the impact screens.",
-  },
-  {
-    question: "Are lessons included with a membership?",
-    answer:
-      "Lessons are booked separately from memberships and are available by appointment. Many members pair their practice membership with data-driven coaching for the fastest improvement.",
-  },
 ];
 
 function CheckIcon() {
@@ -121,58 +74,6 @@ function XIcon() {
         d="M6 18L18 6M6 6l12 12"
       />
     </svg>
-  );
-}
-
-function FaqItem({
-  question,
-  answer,
-}: {
-  question: string;
-  answer: string;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="bg-brand-gray-950 border border-brand-gray-800 rounded-lg overflow-hidden">
-      <button
-        type="button"
-        onClick={() => setOpen((prev) => !prev)}
-        aria-expanded={open}
-        className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-brand-gray-900/50 transition-colors"
-      >
-        <span className="text-white font-semibold text-base md:text-lg">
-          {question}
-        </span>
-        <svg
-          className={`w-5 h-5 text-brand-green shrink-0 transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
-      <div
-        className={`grid transition-all duration-200 ease-in-out ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="overflow-hidden">
-          <p className="px-6 pb-5 text-brand-gray-300 text-sm md:text-base leading-relaxed">
-            {answer}
-          </p>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -427,7 +328,7 @@ export default function MembershipsPage() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <div className="space-y-4">
-              {faqs.map((faq) => (
+              {MEMBERSHIP_FAQS.map((faq) => (
                 <FaqItem
                   key={faq.question}
                   question={faq.question}
