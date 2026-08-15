@@ -77,7 +77,7 @@ const faqs = [
   {
     question: "Can I use my own golf balls?",
     answer:
-      "Yes, you're also welcome to use your own gamer ball to dial in your data with the specific ball you play. This is a major benefit of using the best-in-class GC Quad launch monitors. We just ask that the ball is new and clean — no sharpie marks that will transfer to the impact screens.",
+      "Yes, you're welcome to use your own gamer ball to dial in your data with the specific ball you play. This is a major benefit of using the best-in-class GC Quad launch monitors. We just ask that the ball is new and clean — no sharpie marks that will transfer to the impact screens.",
   },
   {
     question: "Are lessons included with a membership?",
