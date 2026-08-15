@@ -47,7 +47,12 @@ const faqs = [
   {
     question: "Is there a contract or long-term commitment?",
     answer:
-      "No. Membership is month to month with no contract. There's no sign-up fee, no cancellation fee, and no year-long commitment. Pay month to month and cancel anytime.",
+      "No. Membership is month to month with no contract. There's no sign-up fee, no cancellation fee, and no year-long commitment. Pay month to month and cancel anytime. Once you cancel, you will have access for the remainder of your billing period. Each membership is on auto-renewal, and in your profile you have a quick and easy way to cancel your membership at any time throughout the month.",
+  },
+  {
+    question: "Can I pause my membership if I get injured or travel?",
+    answer:
+      "Since we are month-to-month, with no contracts, no sign-up fee, and no cancellation fees, pausing a membership is not needed. Just cancel and when you're ready to come back, purchase your membership at that time.",
   },
   {
     question: "What are your hours?",
@@ -57,7 +62,7 @@ const faqs = [
   {
     question: "Do I need to book a bay in advance?",
     answer:
-      "Bays and reservations are managed through our app-based booking system, so you can reserve your time in advance and know a bay is waiting for you — no waiting, no crowds.",
+      "Yes, however it is very easy. Bays and reservations are managed through our app-based booking system, so you can reserve your time in advance and know a bay is waiting for you — no waiting, no crowds. You can book immediately at the next available :15 minute increment (if it's 8:59 AM and a 9:00 AM slot is open, you can book it!).",
   },
   {
     question: "Can I bring guests or is this open to the public?",
@@ -72,7 +77,7 @@ const faqs = [
   {
     question: "Can I use my own golf balls?",
     answer:
-      "We provide premium golf balls in every bay. You're also welcome to use your own gamer ball for even more accurate, game-specific data from the launch monitor.",
+      "We provide premium golf balls in every bay. Yes, you're also welcome to use your own gamer ball to dial in your data with the specific ball you play. This is a major benefit of using the best-in-class GC Quad launch monitors. We just ask that the ball is new and clean — no sharpie marks that will transfer to the impact screens.",
   },
   {
     question: "Are lessons included with a membership?",
