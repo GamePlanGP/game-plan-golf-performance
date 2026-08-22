@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
 import FaqItem from "@/components/FaqItem";
 import { MEMBERSHIP_FAQS } from "@/lib/faqs";
+import { BECOME_A_MEMBER_URL, isFlashSaleActive } from "@/lib/constants";
 
 const membership = {
   price: "$149",
@@ -78,6 +81,11 @@ function XIcon() {
 }
 
 export default function MembershipsPage() {
+  // Gate on mount so the promo's active/expired state is decided by the
+  // viewer's current date, not the build-time prerender.
+  const [saleActive, setSaleActive] = useState(false);
+  useEffect(() => setSaleActive(isFlashSaleActive()), []);
+
   return (
     <>
       {/* Hero */}
@@ -106,6 +114,53 @@ export default function MembershipsPage() {
         </div>
       </section>
 
+      {/* Limited-time offer */}
+      {saleActive && (
+        <section className="pt-6 pb-2 md:pt-8 md:pb-4 bg-brand-dark">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeIn>
+              <Link
+                href={BECOME_A_MEMBER_URL}
+                className="group block relative overflow-hidden rounded-lg bg-gradient-to-br from-brand-green-muted via-brand-green to-brand-green-hover p-6 md:p-8 text-center shadow-[0_10px_40px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
+              >
+                <span className="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full pl-2.5 pr-4 py-1 mb-4">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  <span className="text-white text-xs font-bold uppercase tracking-widest">
+                    Limited-Time Offer
+                  </span>
+                </span>
+                <h2 className="font-heading text-white font-bold tracking-tight text-2xl md:text-4xl leading-[1.1]">
+                  New Members Get Their{" "}
+                  <span className="whitespace-nowrap">2nd Month Free</span>
+                </h2>
+                <p className="mt-3 text-white/90 text-sm md:text-base">
+                  Sign up by{" "}
+                  <span className="font-bold text-white">August 31</span> to
+                  claim your free month. No contract — cancel anytime.
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wide">
+                  Become a Member
+                  <svg
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
       {/* Membership */}
       <section className="py-8 md:py-12 bg-brand-dark">
         <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,6 +183,11 @@ export default function MembershipsPage() {
               <p className="text-brand-gray-300 mt-4">
                 Unlimited practice. Every day. No caps, no monthly limits.
               </p>
+              {saleActive && (
+                <p className="mt-3 text-brand-green text-sm font-semibold">
+                  Join by Aug 31 and your 2nd month is on us.
+                </p>
+              )}
 
               <ul className="mt-8 space-y-3 text-left max-w-sm mx-auto">
                 {membership.features.map((feature) => (
@@ -140,13 +200,18 @@ export default function MembershipsPage() {
 
               <div className="mt-8">
                 <Button
-                  href="https://clients.uschedule.com/gameplangolfperformance/Product/MembershipDetail/11359"
+                  href={BECOME_A_MEMBER_URL}
                   variant="primary"
                   size="lg"
                   className="w-full"
                 >
                   Become a Member
                 </Button>
+                {saleActive && (
+                  <p className="mt-3 text-brand-gray-400 text-xs">
+                    Offer ends August 31 — 2nd month free for new members.
+                  </p>
+                )}
               </div>
             </div>
           </FadeIn>

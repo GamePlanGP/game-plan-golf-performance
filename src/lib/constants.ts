@@ -7,6 +7,17 @@ export const BOOKING_URL = "https://example.com/book"; // [REPLACE] Replace with
 export const MEMBERSHIP_URL = "https://example.com/memberships"; // [REPLACE] Replace with actual membership signup URL
 export const MEMBER_LOGIN_URL = "https://clients.uschedule.com/gameplangolfperformance/account/login";
 
+// Direct signup link for the practice membership.
+export const BECOME_A_MEMBER_URL =
+  "https://clients.uschedule.com/gameplangolfperformance/Product/MembershipDetail/11359";
+
+// Limited-time promo: new members get their 2nd month free when they join by
+// Aug 31, 2026. The memberships-page banner and callouts hide automatically
+// after this deadline. Set to midnight PT on Sep 1 (UTC-7) so all of Aug 31
+// local time still qualifies.
+export const FLASH_SALE_END = new Date("2026-09-01T07:00:00Z");
+export const isFlashSaleActive = () => Date.now() < FLASH_SALE_END.getTime();
+
 export const ADDRESS = {
   street: "1621 S Rancho Santa Fe Rd Ste. H",
   city: "San Marcos",
