@@ -106,13 +106,38 @@ export default function MembershipsPage() {
         </div>
       </section>
 
+      {/* Flash Sale */}
+      <section className="pt-6 pb-2 md:pt-8 md:pb-4 bg-brand-dark">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-brand-green-muted via-brand-green to-brand-green-hover p-6 md:p-8 text-center shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
+              <span className="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full pl-2.5 pr-4 py-1 mb-4">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span className="text-white text-xs font-bold uppercase tracking-widest">
+                  Flash Sale
+                </span>
+              </span>
+              <h2 className="font-heading text-white font-bold tracking-tight text-2xl md:text-4xl leading-[1.1]">
+                New Members Get Their{" "}
+                <span className="whitespace-nowrap">2nd Month Free</span>
+              </h2>
+              <p className="mt-3 text-white/90 text-sm md:text-base">
+                Sign up by{" "}
+                <span className="font-bold text-white">August 31</span> to claim
+                your free month. No contract — cancel anytime.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* Membership */}
       <section className="py-8 md:py-12 bg-brand-dark">
         <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="bg-brand-green/5 border-2 border-brand-green rounded-lg p-8 md:p-10 text-center">
-              <span className="inline-block bg-brand-green/10 text-brand-green text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-                No Contract — Cancel Anytime
+              <span className="inline-block bg-brand-green text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                Flash Sale — 2nd Month Free
               </span>
               <h3 className="font-heading text-lg font-bold text-white uppercase tracking-wider">
                 Practice Membership
@@ -127,6 +152,9 @@ export default function MembershipsPage() {
               </div>
               <p className="text-brand-gray-300 mt-4">
                 Unlimited practice. Every day. No caps, no monthly limits.
+              </p>
+              <p className="mt-3 text-brand-green text-sm font-semibold">
+                Join by Aug 31 and your 2nd month is on us.
               </p>
 
               <ul className="mt-8 space-y-3 text-left max-w-sm mx-auto">
@@ -147,6 +175,9 @@ export default function MembershipsPage() {
                 >
                   Become a Member
                 </Button>
+                <p className="mt-3 text-brand-gray-400 text-xs">
+                  Flash sale ends August 31 — 2nd month free for new members.
+                </p>
               </div>
             </div>
           </FadeIn>
