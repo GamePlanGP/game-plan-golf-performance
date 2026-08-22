@@ -283,19 +283,36 @@ export default function Home() {
 
             {saleActive && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.55 }}
-                className="mt-3"
+                className="mt-4"
               >
                 <Link
                   href="/memberships"
-                  className="group inline-flex items-center gap-2 text-brand-green text-sm font-semibold hover:text-brand-green-hover transition-colors duration-200"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-lg bg-gradient-to-r from-brand-green-muted via-brand-green to-brand-green-hover pl-3 pr-4 py-2.5 shadow-[0_8px_30px_rgba(18,112,85,0.45)] ring-1 ring-brand-green/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(18,112,85,0.6)]"
                 >
-                  <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-                  New members get their 2nd month free — join by Aug 31
+                  {/* Sheen sweep */}
+                  <motion.span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                    initial={{ x: "-150%" }}
+                    animate={{ x: "150%" }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatDelay: 2.5,
+                      duration: 1.1,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <span className="relative shrink-0 rounded-md bg-white px-2 py-0.5 text-xs font-extrabold uppercase tracking-wide text-brand-green">
+                    2nd Month Free
+                  </span>
+                  <span className="relative text-sm font-bold text-white">
+                    New members — join by Aug 31
+                  </span>
                   <svg
-                    className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                    className="relative w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-0.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
