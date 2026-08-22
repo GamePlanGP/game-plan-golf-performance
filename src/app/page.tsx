@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
@@ -11,7 +11,7 @@ import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import PromoBanner from "@/components/PromoBanner";
-import { CITIES_SERVED } from "@/lib/constants";
+import { CITIES_SERVED, isFlashSaleActive } from "@/lib/constants";
 
 /* ─── Icon components ─── */
 function TargetIcon({ className = "w-6 h-6" }: { className?: string }) {
@@ -180,6 +180,11 @@ export default function Home() {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
+  // Gate the 2nd-month-free promo on mount so it reflects the viewer's current
+  // date and hides automatically after the deadline (see FLASH_SALE_END).
+  const [saleActive, setSaleActive] = useState(false);
+  useEffect(() => setSaleActive(isFlashSaleActive()), []);
+
   return (
     <>
       {/* ─── Limited-Time Promo ─── */}
@@ -275,6 +280,37 @@ export default function Home() {
                 <span className="text-brand-gray-300 text-sm">Unlimited practice membership</span>
               </Link>
             </motion.div>
+
+            {saleActive && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.55 }}
+                className="mt-3"
+              >
+                <Link
+                  href="/memberships"
+                  className="group inline-flex items-center gap-2 text-brand-green text-sm font-semibold hover:text-brand-green-hover transition-colors duration-200"
+                >
+                  <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
+                  New members get their 2nd month free — join by Aug 31
+                  <svg
+                    className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </Link>
+              </motion.div>
+            )}
           </div>
         </div>
 
