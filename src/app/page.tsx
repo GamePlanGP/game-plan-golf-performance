@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
@@ -11,7 +11,7 @@ import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import PromoBanner from "@/components/PromoBanner";
-import { CITIES_SERVED } from "@/lib/constants";
+import { CITIES_SERVED, isFlashSaleActive } from "@/lib/constants";
 
 /* ─── Icon components ─── */
 function TargetIcon({ className = "w-6 h-6" }: { className?: string }) {
@@ -180,6 +180,11 @@ export default function Home() {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
+  // Gate the 2nd-month-free promo on mount so it reflects the viewer's current
+  // date and hides automatically after the deadline (see FLASH_SALE_END).
+  const [saleActive, setSaleActive] = useState(false);
+  useEffect(() => setSaleActive(isFlashSaleActive()), []);
+
   return (
     <>
       {/* ─── Limited-Time Promo ─── */}
@@ -275,6 +280,54 @@ export default function Home() {
                 <span className="text-brand-gray-300 text-sm">Unlimited practice membership</span>
               </Link>
             </motion.div>
+
+            {saleActive && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.55 }}
+                className="mt-4"
+              >
+                <Link
+                  href="/memberships"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-lg bg-gradient-to-r from-brand-green-muted via-brand-green to-brand-green-hover pl-3 pr-4 py-2.5 shadow-[0_8px_30px_rgba(18,112,85,0.45)] ring-1 ring-brand-green/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(18,112,85,0.6)]"
+                >
+                  {/* Sheen sweep */}
+                  <motion.span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                    initial={{ x: "-150%" }}
+                    animate={{ x: "150%" }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatDelay: 2.5,
+                      duration: 1.1,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <span className="relative shrink-0 rounded-md bg-white px-2 py-0.5 text-xs font-extrabold uppercase tracking-wide text-brand-green">
+                    2nd Month Free
+                  </span>
+                  <span className="relative text-sm font-bold text-white">
+                    New members — join by Aug 31
+                  </span>
+                  <svg
+                    className="relative w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </Link>
+              </motion.div>
+            )}
           </div>
         </div>
 
