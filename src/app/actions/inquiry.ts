@@ -11,7 +11,7 @@ export type InquiryResult = { success: true } | { success: false; error: string 
 const MIN_FILL_TIME_MS = 2000;
 
 export async function submitInquiry(
-  type: "membership" | "contact",
+  type: "membership" | "contact" | "training",
   formData: FormData
 ): Promise<InquiryResult> {
   // ── Bot protection ──
@@ -42,7 +42,9 @@ export async function submitInquiry(
   const subject =
     type === "membership"
       ? `New Membership Inquiry from ${name}`
-      : `New Contact Form Submission from ${name}`;
+      : type === "training"
+        ? `New Adult Fitness (8-Pack) Inquiry from ${name}`
+        : `New Contact Form Submission from ${name}`;
 
   const rows = [
     `<tr><td style="padding:8px 0;color:#888;width:120px">Name</td><td style="padding:8px 0;color:#fff">${name}</td></tr>`,

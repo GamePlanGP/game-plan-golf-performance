@@ -1,9 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
+import InquiryModal from "@/components/InquiryModal";
+
+// Booking URL for the individual adult training session ($150/session).
+const ADULT_SESSION_URL =
+  "https://clients.uschedule.com/gameplangolfperformance/booking?filter=ser[39012]";
 
 const credentials = [
   {
@@ -46,6 +52,8 @@ const process = [
 ];
 
 export default function TrainingPage() {
+  const [adultInquiryOpen, setAdultInquiryOpen] = useState(false);
+
   return (
     <>
       {/* Hero */}
@@ -258,15 +266,25 @@ export default function TrainingPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37593"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
-                >
-                  <span>8-Pack Adult Fitness</span>
-                  <span className="text-brand-green">$1,000</span>
-                </a>
+                <div className="mt-6 space-y-3">
+                  <a
+                    href={ADULT_SESSION_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
+                  >
+                    <span>Individual Adult Session</span>
+                    <span className="text-brand-green">$150/session</span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setAdultInquiryOpen(true)}
+                    className="w-full flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors text-left"
+                  >
+                    <span>8-Pack Adult Fitness</span>
+                    <span className="text-brand-green">Contact for Pricing</span>
+                  </button>
+                </div>
               </div>
             </FadeIn>
 
@@ -334,6 +352,15 @@ export default function TrainingPage() {
           </FadeIn>
         </div>
       </section>
+
+      <InquiryModal
+        open={adultInquiryOpen}
+        onClose={() => setAdultInquiryOpen(false)}
+        type="training"
+        title="8-Pack Adult Fitness"
+        description="Interested in the 8-Pack Adult Fitness program? Send me your details and I'll get back to you with pricing and availability."
+        defaultMessage="I'm interested in the 8-Pack Adult Fitness program. Please send me pricing details."
+      />
     </>
   );
 }
