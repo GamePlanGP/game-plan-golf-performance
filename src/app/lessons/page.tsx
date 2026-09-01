@@ -4,7 +4,6 @@ import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
-import PromoBanner from "@/components/PromoBanner";
 
 interface InstructorLesson {
   label: string;
@@ -64,24 +63,15 @@ const instructors: Instructor[] = [
       "Ground Reaction Force Expert",
       "Former Professional Golfer",
     ],
-    promo: {
-      headline: "Limited-Time Offer",
-      price: "$99",
-      unit: "/session",
-      detail:
-        "Elite, personalized coaching for every level — building the swing that's right for you, now just $99 a session.",
-    },
     lessons: [
       {
         label: "Adult Lesson",
-        price: "$99",
-        originalPrice: "$150",
+        price: "$150",
         href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37304",
       },
       {
         label: "Junior Lesson",
-        price: "$99",
-        originalPrice: "$135",
+        price: "$135",
         href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37311",
       },
     ],
@@ -115,11 +105,8 @@ const techStack = [
 export default function LessonsPage() {
   return (
     <>
-      {/* Limited-Time Promo */}
-      <PromoBanner href="#instructors" />
-
       {/* Hero */}
-      <section className="relative pt-20 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-0">
           {/*
             [REPLACE] Background: Coach working 1:1 with a golfer mid-lesson
