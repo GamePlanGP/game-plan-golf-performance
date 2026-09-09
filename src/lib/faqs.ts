@@ -49,4 +49,9 @@ export const MEMBERSHIP_FAQS: Faq[] = [
     answer:
       "Lessons are booked separately from memberships and are available by appointment. Many members pair their practice membership with data-driven coaching for the fastest improvement.",
   },
+  {
+    question: "What is the New Client Special?",
+    answer:
+      "The New Client Special is a 3-lesson starter package with Christian Chang, our Golf Level 3 TPI Certified lead instructor, for $99 per lesson — $297 total, a savings off our standard $150 lesson rate. Every lesson is powered by Swing Catalyst force plates and GC Quad launch monitor data, so you'll see exactly how you move and leave with a clear plan to improve. The package is available to new clients only and must be used within 60 days of purchase — any sessions not used within 60 days expire.",
+  },
 ];
