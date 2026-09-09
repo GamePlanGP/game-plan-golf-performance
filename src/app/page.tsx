@@ -281,7 +281,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.45 }}
-              className="mt-3 sm:ml-3 inline-block"
+              className="mt-3 inline-block"
             >
               <a
                 href={NEW_CLIENT_SPECIAL_URL}

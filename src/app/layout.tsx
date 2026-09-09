@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
 import "./globals.css";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${outfit.variable}`}>
       <body className="font-sans antialiased bg-brand-dark text-white">
+        <AnnouncementBar />
         <Header />
         <main>{children}</main>
         <Footer />

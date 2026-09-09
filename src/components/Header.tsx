@@ -7,10 +7,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
 import { NAV_LINKS, MEMBER_LOGIN_URL } from "@/lib/constants";
 
+// Routes that render the AnnouncementBar (h-10). On these the fixed header is
+// pushed down by the bar's height — keep in sync with AnnouncementBar.
+const ANNOUNCEMENT_ROUTES = ["/", "/lessons"];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const hasAnnouncement = ANNOUNCEMENT_ROUTES.includes(pathname);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -24,7 +29,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+        hasAnnouncement ? "top-10" : "top-0"
+      } ${
         isScrolled
           ? "bg-brand-dark/90 backdrop-blur-md"
           : "bg-transparent"
