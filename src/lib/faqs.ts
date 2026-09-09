@@ -55,7 +55,7 @@ export const MEMBERSHIP_FAQS: Faq[] = [
       "A 3-lesson starter package with Christian Chang, our Golf Level 3 TPI Certified lead instructor, for $99 per lesson ($297 total). Every lesson uses Swing Catalyst force plates and GC Quad data to build a clear plan for your game. New clients only, and must be used within 60 days of purchase.",
   },
   {
-    question: "Can I cancel the New Client Special after my first lesson?",
+    question: "Do you offer a satisfaction guarantee on the New Client Special?",
     answer:
       "Yes — the package comes with a satisfaction guarantee. If after your first lesson you feel Christian isn't the right instructor for you, you can cancel the rest of your package and receive a $147 refund. Just make the request within 24 hours of your first lesson.",
   },
