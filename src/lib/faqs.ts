@@ -57,6 +57,6 @@ export const MEMBERSHIP_FAQS: Faq[] = [
   {
     question: "Do you offer a satisfaction guarantee on the New Client Special?",
     answer:
-      "Yes — the package comes with a satisfaction guarantee. If after your first lesson you feel Christian isn't the right instructor for you, you can cancel the rest of your package and receive a $147 refund. Just make the request within 24 hours of your first lesson.",
+      "Yes — the package comes with a satisfaction guarantee. If after your first lesson you feel Christian isn't the right instructor for you, you can cancel the rest of your package and receive a $147 refund. Just email info@gameplangp.com within 24 hours of your first lesson.",
   },
 ];
