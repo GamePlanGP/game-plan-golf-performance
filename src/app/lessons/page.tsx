@@ -4,6 +4,7 @@ import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
+import { NEW_CLIENT_SPECIAL_URL } from "@/lib/constants";
 
 interface InstructorLesson {
   label: string;
@@ -23,6 +24,15 @@ interface Instructor {
     price: string;
     unit: string;
     detail: string;
+  };
+  newClientSpecial?: {
+    headline: string;
+    price: string;
+    unit: string;
+    total: string;
+    description: string;
+    bullets: string[];
+    href: string;
   };
   lessons: InstructorLesson[];
 }
@@ -63,6 +73,21 @@ const instructors: Instructor[] = [
       "Ground Reaction Force Expert",
       "Former Professional Golfer",
     ],
+    newClientSpecial: {
+      headline: "3-Lesson New Client Starter Package",
+      price: "$99",
+      unit: "/lesson",
+      total: "$297 total",
+      description:
+        "Get started with TPI Certified Level 3 coaching, powered by Swing Catalyst Force Plates and GC Quad data — every lesson.",
+      bullets: [
+        "3 lessons, $99 each ($297 total)",
+        "Must be used within 60 days of purchase. Sessions expire after 60 days if not used!",
+        "New clients only",
+        "Real swing data. Real progress. A real Game Plan",
+      ],
+      href: NEW_CLIENT_SPECIAL_URL,
+    },
     lessons: [
       {
         label: "Adult Lesson",
@@ -147,6 +172,21 @@ export default function LessonsPage() {
                   Book a Lesson
                 </Button>
               </div>
+            </FadeIn>
+            <FadeIn delay={0.4}>
+              <a
+                href={NEW_CLIENT_SPECIAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-3 bg-brand-green/10 border border-brand-green/30 rounded-full pl-2 pr-5 py-2 hover:bg-brand-green/20 hover:border-brand-green/50 transition-colors duration-200"
+              >
+                <span className="bg-brand-green text-white text-sm font-bold px-3 py-1 rounded-full">
+                  $99/lesson
+                </span>
+                <span className="text-brand-gray-300 text-sm">
+                  New Client Special — 3 lessons with Christian
+                </span>
+              </a>
             </FadeIn>
           </div>
         </div>
@@ -277,6 +317,50 @@ export default function LessonsPage() {
                         <p className="text-brand-green text-sm font-semibold">
                           {instructor.promo.detail}
                         </p>
+                      </div>
+                    )}
+                    {instructor.newClientSpecial && (
+                      <div className="mt-4 rounded-lg border border-brand-green/40 bg-brand-green/10 p-4">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="bg-brand-green text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                            New Client Special
+                          </span>
+                          <span className="text-brand-green text-sm font-bold">
+                            {instructor.newClientSpecial.price}
+                            {instructor.newClientSpecial.unit}
+                            <span className="text-brand-gray-400 font-normal">
+                              {" "}
+                              · {instructor.newClientSpecial.total}
+                            </span>
+                          </span>
+                        </div>
+                        <p className="text-white font-heading font-bold text-base mt-2">
+                          {instructor.newClientSpecial.headline}
+                        </p>
+                        <p className="text-brand-gray-300 text-sm leading-relaxed mt-1">
+                          {instructor.newClientSpecial.description}
+                        </p>
+                        <ul className="mt-3 space-y-1.5">
+                          {instructor.newClientSpecial.bullets.map((bullet) => (
+                            <li key={bullet} className="flex items-start gap-2">
+                              <svg className="w-4 h-4 text-brand-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-brand-gray-300 text-sm leading-relaxed">
+                                {bullet}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        <a
+                          href={instructor.newClientSpecial.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-4 flex items-center justify-between bg-brand-green hover:bg-brand-green-hover text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
+                        >
+                          <span>Get the Starter Package</span>
+                          <span>{instructor.newClientSpecial.total}</span>
+                        </a>
                       </div>
                     )}
                     <div className="mt-5 flex flex-col gap-2">

@@ -11,6 +11,11 @@ export const MEMBER_LOGIN_URL = "https://clients.uschedule.com/gameplangolfperfo
 export const BECOME_A_MEMBER_URL =
   "https://clients.uschedule.com/gameplangolfperformance/Product/MembershipDetail/11359";
 
+// New Client Special: a 3-lesson starter package with Christian ($99/lesson,
+// $297 total) for new clients, redeemable within 60 days of purchase.
+export const NEW_CLIENT_SPECIAL_URL =
+  "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/42966";
+
 // Limited-time promo: new members get their 2nd month free when they join by
 // Aug 31, 2026. The memberships-page banner and callouts hide automatically
 // after this deadline. Set to midnight PT on Sep 1 (UTC-7) so all of Aug 31

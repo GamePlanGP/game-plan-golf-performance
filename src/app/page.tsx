@@ -10,7 +10,7 @@ import SectionHeader from "@/components/SectionHeader";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import { CITIES_SERVED, isFlashSaleActive } from "@/lib/constants";
+import { CITIES_SERVED, isFlashSaleActive, NEW_CLIENT_SPECIAL_URL } from "@/lib/constants";
 
 /* ─── Icon components ─── */
 function TargetIcon({ className = "w-6 h-6" }: { className?: string }) {
@@ -275,6 +275,25 @@ export default function Home() {
                 </span>
                 <span className="text-brand-gray-300 text-sm">Unlimited practice membership</span>
               </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.45 }}
+              className="mt-3 sm:ml-3 inline-block"
+            >
+              <a
+                href={NEW_CLIENT_SPECIAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-brand-green/10 border border-brand-green/30 rounded-full pl-2 pr-5 py-2 hover:bg-brand-green/20 hover:border-brand-green/50 transition-colors duration-200"
+              >
+                <span className="bg-brand-green text-white text-sm font-bold px-3 py-1 rounded-full">
+                  $99/lesson
+                </span>
+                <span className="text-brand-gray-300 text-sm">New Client Special — 3 lessons with Christian</span>
+              </a>
             </motion.div>
 
             {saleActive && (
