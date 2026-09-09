@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
+import InquiryModal from "@/components/InquiryModal";
 import { NEW_CLIENT_SPECIAL_URL } from "@/lib/constants";
+import { LESSON_APPLICATION_FIELDS } from "@/lib/lessonApplication";
 
 interface InstructorLesson {
   label: string;
@@ -24,6 +27,15 @@ interface Instructor {
     price: string;
     unit: string;
     detail: string;
+  };
+  /** When set, new clients apply for a spot instead of booking directly. */
+  application?: {
+    badge: string;
+    headline: string;
+    description: string;
+    ctaLabel: string;
+    /** Label above the direct booking links, for clients already working with them. */
+    existingClientNote: string;
   };
   newClientSpecial?: {
     headline: string;
@@ -49,6 +61,14 @@ const instructors: Instructor[] = [
       "TPI Certified — Power 2 & Fitness 2",
       "NASM Certified Personal Trainer",
     ],
+    application: {
+      badge: "New Clients",
+      headline: "Apply to Work with Ryan",
+      description:
+        "Ryan takes on a limited number of new golfers so every player gets his full attention. Tell us about your game and what you're working toward, and he'll follow up to see if it's the right fit.",
+      ctaLabel: "Apply for a Lesson",
+      existingClientNote: "Already working with Ryan? Book directly:",
+    },
     lessons: [
       {
         label: "Adult Lesson",
@@ -128,6 +148,8 @@ const techStack = [
 ];
 
 export default function LessonsPage() {
+  const [applyingTo, setApplyingTo] = useState<Instructor | null>(null);
+
   return (
     <>
       {/* Hero */}
@@ -363,7 +385,36 @@ export default function LessonsPage() {
                         </a>
                       </div>
                     )}
-                    <div className="mt-5 flex flex-col gap-2">
+                    {instructor.application && (
+                      <div className="mt-4 rounded-lg border border-brand-green/40 bg-brand-green/10 p-4">
+                        <span className="bg-brand-green text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                          {instructor.application.badge}
+                        </span>
+                        <p className="text-white font-heading font-bold text-base mt-2">
+                          {instructor.application.headline}
+                        </p>
+                        <p className="text-brand-gray-300 text-sm leading-relaxed mt-1">
+                          {instructor.application.description}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => setApplyingTo(instructor)}
+                          className="mt-4 w-full bg-brand-green hover:bg-brand-green-hover text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors active:scale-[0.98]"
+                        >
+                          {instructor.application.ctaLabel}
+                        </button>
+                      </div>
+                    )}
+                    {instructor.application && (
+                      <p className="mt-5 text-brand-gray-500 text-xs uppercase tracking-wider font-semibold">
+                        {instructor.application.existingClientNote}
+                      </p>
+                    )}
+                    <div
+                      className={`flex flex-col gap-2 ${
+                        instructor.application ? "mt-2" : "mt-5"
+                      }`}
+                    >
                       {instructor.lessons.map((lesson) => (
                         <a
                           key={lesson.href}
@@ -475,6 +526,21 @@ export default function LessonsPage() {
           </FadeIn>
         </div>
       </section>
+
+      <InquiryModal
+        open={applyingTo !== null}
+        onClose={() => setApplyingTo(null)}
+        type="lesson-application"
+        title={applyingTo?.application?.headline ?? ""}
+        description={`Tell us about your game and ${applyingTo?.name.split(" ")[0] ?? "your coach"} will follow up to see if it's the right fit.`}
+        eyebrow="Lesson Application"
+        extraFields={LESSON_APPLICATION_FIELDS}
+        messageLabel="Anything else we should know?"
+        messagePlaceholder="Injuries, past coaching, what's been frustrating you…"
+        submitLabel="Submit Application"
+        successTitle="Application Received"
+        successMessage="Thanks — we'll review your application and follow up within one business day."
+      />
     </>
   );
 }
