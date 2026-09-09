@@ -1,17 +1,29 @@
 "use server";
 
 import { Resend } from "resend";
+import { LESSON_APPLICATION_FIELDS } from "@/lib/lessonApplication";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export type InquiryResult = { success: true } | { success: false; error: string };
+
+// Submitted values are interpolated into the notification email's HTML, so
+// escape them rather than trusting the input.
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 // Minimum time (ms) a genuine visitor takes to fill out the form. Anything
 // faster is almost certainly an automated submission.
 const MIN_FILL_TIME_MS = 2000;
 
 export async function submitInquiry(
-  type: "membership" | "contact" | "training",
+  type: "membership" | "contact" | "training" | "lesson-application",
   formData: FormData
 ): Promise<InquiryResult> {
   // ── Bot protection ──
@@ -44,13 +56,27 @@ export async function submitInquiry(
       ? `New Membership Inquiry from ${name}`
       : type === "training"
         ? `New Adult Fitness (8-Pack) Inquiry from ${name}`
-        : `New Contact Form Submission from ${name}`;
+        : type === "lesson-application"
+          ? `New Lesson Application from ${name}`
+          : `New Contact Form Submission from ${name}`;
+
+  // Screening answers, included only for lesson applications.
+  const applicationRows =
+    type === "lesson-application"
+      ? LESSON_APPLICATION_FIELDS.map((field) => {
+          const value = (formData.get(field.name) as string)?.trim();
+          return value
+            ? `<tr><td style="padding:8px 0;color:#888;vertical-align:top">${escapeHtml(field.label)}</td><td style="padding:8px 0;color:#fff">${escapeHtml(value)}</td></tr>`
+            : "";
+        })
+      : [];
 
   const rows = [
-    `<tr><td style="padding:8px 0;color:#888;width:120px">Name</td><td style="padding:8px 0;color:#fff">${name}</td></tr>`,
-    `<tr><td style="padding:8px 0;color:#888">Email</td><td style="padding:8px 0;color:#fff"><a href="mailto:${email}" style="color:#127055">${email}</a></td></tr>`,
-    phone ? `<tr><td style="padding:8px 0;color:#888">Phone</td><td style="padding:8px 0;color:#fff">${phone}</td></tr>` : "",
-    message ? `<tr><td style="padding:8px 0;color:#888;vertical-align:top">Message</td><td style="padding:8px 0;color:#fff">${message.replace(/\n/g, "<br>")}</td></tr>` : "",
+    `<tr><td style="padding:8px 0;color:#888;width:120px">Name</td><td style="padding:8px 0;color:#fff">${escapeHtml(name)}</td></tr>`,
+    `<tr><td style="padding:8px 0;color:#888">Email</td><td style="padding:8px 0;color:#fff"><a href="mailto:${escapeHtml(email)}" style="color:#127055">${escapeHtml(email)}</a></td></tr>`,
+    phone ? `<tr><td style="padding:8px 0;color:#888">Phone</td><td style="padding:8px 0;color:#fff">${escapeHtml(phone)}</td></tr>` : "",
+    ...applicationRows,
+    message ? `<tr><td style="padding:8px 0;color:#888;vertical-align:top">Message</td><td style="padding:8px 0;color:#fff">${escapeHtml(message).replace(/\n/g, "<br>")}</td></tr>` : "",
   ]
     .filter(Boolean)
     .join("");
@@ -58,7 +84,7 @@ export async function submitInquiry(
   const html = `
     <div style="background:#0a0a0a;padding:32px;font-family:sans-serif;max-width:560px">
       <p style="color:#127055;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin:0 0 16px">Game Plan Golf Performance</p>
-      <h2 style="color:#fff;margin:0 0 24px;font-size:20px">${subject}</h2>
+      <h2 style="color:#fff;margin:0 0 24px;font-size:20px">${escapeHtml(subject)}</h2>
       <table style="width:100%;border-collapse:collapse;border-top:1px solid #222">${rows}</table>
     </div>
   `;

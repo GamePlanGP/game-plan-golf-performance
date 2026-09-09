@@ -2,16 +2,25 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import { submitInquiry } from "@/app/actions/inquiry";
+import type { ApplicationField } from "@/lib/lessonApplication";
 
 type InquiryModalProps = {
   open: boolean;
   onClose: () => void;
   /** Inquiry type passed to the server action — sets the email subject line. */
-  type: "membership" | "contact" | "training";
+  type: "membership" | "contact" | "training" | "lesson-application";
   title: string;
   description: string;
   /** Prefills the message box so the recipient knows what the inquiry is about. */
   defaultMessage?: string;
+  /** Extra questions rendered between the phone and message fields. */
+  extraFields?: ApplicationField[];
+  eyebrow?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
+  submitLabel?: string;
+  successTitle?: string;
+  successMessage?: string;
 };
 
 export default function InquiryModal({
@@ -21,6 +30,13 @@ export default function InquiryModal({
   title,
   description,
   defaultMessage = "",
+  extraFields = [],
+  eyebrow = "Contact Me for Pricing",
+  messageLabel = "Message",
+  messagePlaceholder = "How can we make you a better golfer?",
+  submitLabel = "Send Message",
+  successTitle = "Message Sent",
+  successMessage = "We'll get back to you within one business day.",
 }: InquiryModalProps) {
   const [formState, setFormState] = useState({
     name: "",
@@ -63,9 +79,22 @@ export default function InquiryModal({
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    // The form is noValidate, so required extra questions are checked here.
+    const missing = extraFields.filter(
+      (field) =>
+        field.required && !String(formData.get(field.name) ?? "").trim()
+    );
+    if (missing.length > 0) {
+      setError(
+        `Please answer: ${missing.map((field) => field.label).join(", ")}.`
+      );
+      return;
+    }
+
     setLoading(true);
     setError("");
-    const formData = new FormData(e.currentTarget);
     formData.set("form_elapsed_ms", String(Date.now() - mountedAtRef.current));
     const result = await submitInquiry(type, formData);
     if (result.success) {
@@ -137,11 +166,9 @@ export default function InquiryModal({
               </svg>
             </div>
             <h3 className="font-heading text-xl font-bold text-white mb-2">
-              Message Sent
+              {successTitle}
             </h3>
-            <p className="text-brand-gray-400 text-sm">
-              We&apos;ll get back to you within one business day.
-            </p>
+            <p className="text-brand-gray-400 text-sm">{successMessage}</p>
             <button
               type="button"
               onClick={onClose}
@@ -154,7 +181,7 @@ export default function InquiryModal({
           <form onSubmit={handleSubmit} className="space-y-5" noValidate>
             <div>
               <span className="text-brand-green text-sm font-semibold tracking-widest uppercase">
-                Contact Me for Pricing
+                {eyebrow}
               </span>
               <h2
                 id="inquiry-modal-title"
@@ -229,19 +256,58 @@ export default function InquiryModal({
               />
             </div>
 
+            {extraFields.map((field) => (
+              <div key={field.name}>
+                <label
+                  htmlFor={`inquiry-${field.name}`}
+                  className="block text-sm font-medium text-brand-gray-300 mb-1.5"
+                >
+                  {field.label}
+                  {!field.required && (
+                    <span className="text-brand-gray-500"> (optional)</span>
+                  )}
+                </label>
+                {field.options ? (
+                  <select
+                    id={`inquiry-${field.name}`}
+                    name={field.name}
+                    defaultValue=""
+                    className={inputClasses}
+                  >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+                    {field.options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    type="text"
+                    id={`inquiry-${field.name}`}
+                    name={field.name}
+                    className={inputClasses}
+                    placeholder={field.placeholder}
+                  />
+                )}
+              </div>
+            ))}
+
             <div>
               <label
                 htmlFor="inquiry-message"
                 className="block text-sm font-medium text-brand-gray-300 mb-1.5"
               >
-                Message
+                {messageLabel}
               </label>
               <textarea
                 id="inquiry-message"
                 name="message"
                 rows={4}
                 className={inputClasses}
-                placeholder="How can we make you a better golfer?"
+                placeholder={messagePlaceholder}
                 value={formState.message}
                 onChange={(e) =>
                   setFormState({ ...formState, message: e.target.value })
@@ -256,7 +322,7 @@ export default function InquiryModal({
               disabled={loading}
               className="w-full bg-brand-green text-brand-dark font-semibold tracking-wide uppercase text-sm px-6 py-3 rounded hover:bg-brand-green-hover transition-colors active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {loading ? "Sending…" : "Send Message"}
+              {loading ? "Sending…" : submitLabel}
             </button>
 
             {/*
