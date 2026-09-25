@@ -18,6 +18,7 @@ interface Instructor {
   role: string;
   bio: string;
   availability: string;
+  availabilityNote?: string;
   credentials: string[];
   promo?: {
     headline: string;
@@ -43,6 +44,7 @@ const instructors: Instructor[] = [
     role: "Founder & Head Golf Performance Coach",
     bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
     availability: "Mon & Wed mornings · Tue & Thu afternoons",
+    availabilityNote: "Ryan has limited availability for new clients",
     credentials: [
       "Swing Catalyst Ambassador",
       "Swing Catalyst Level 2 Certified",
@@ -307,6 +309,9 @@ export default function LessonsPage() {
                       <div>
                         <p className="text-brand-gray-500 text-xs uppercase tracking-wider font-semibold">Generally Available</p>
                         <p className="text-white text-sm mt-0.5">{instructor.availability}</p>
+                        {instructor.availabilityNote && (
+                          <p className="text-brand-gray-300 text-sm italic mt-1">{instructor.availabilityNote}</p>
+                        )}
                       </div>
                     </div>
                     {instructor.promo && (
