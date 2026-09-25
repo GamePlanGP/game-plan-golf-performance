@@ -44,7 +44,7 @@ const instructors: Instructor[] = [
     role: "Founder & Head Golf Performance Coach",
     bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
     availability: "Mon & Wed mornings · Tue & Thu afternoons",
-    availabilityNote: "Ryan has limited availability for new clients",
+    availabilityNote: "Ryan's calendar is currently full — new students, please book with Christian.",
     credentials: [
       "Swing Catalyst Ambassador",
       "Swing Catalyst Level 2 Certified",
