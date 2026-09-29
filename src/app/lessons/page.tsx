@@ -18,6 +18,7 @@ interface Instructor {
   role: string;
   bio: string;
   availability: string;
+  availabilityNote?: string;
   credentials: string[];
   promo?: {
     headline: string;
@@ -34,7 +35,7 @@ interface Instructor {
     bullets: string[];
     href: string;
   };
-  lessons: InstructorLesson[];
+  lessons?: InstructorLesson[];
 }
 
 const instructors: Instructor[] = [
@@ -43,23 +44,13 @@ const instructors: Instructor[] = [
     role: "Founder & Head Golf Performance Coach",
     bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
     availability: "Mon & Wed mornings · Tue & Thu afternoons",
+    availabilityNote:
+      "Ryan is currently fully booked and not currently taking new students",
     credentials: [
       "Swing Catalyst Ambassador",
       "Swing Catalyst Level 2 Certified",
       "TPI Certified — Power 2 & Fitness 2",
       "NASM Certified Personal Trainer",
-    ],
-    lessons: [
-      {
-        label: "Adult Lesson",
-        price: "$150",
-        href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37304",
-      },
-      {
-        label: "Junior Lesson",
-        price: "$135",
-        href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/37311",
-      },
     ],
   },
   {
@@ -307,6 +298,11 @@ export default function LessonsPage() {
                       <div>
                         <p className="text-brand-gray-500 text-xs uppercase tracking-wider font-semibold">Generally Available</p>
                         <p className="text-white text-sm mt-0.5">{instructor.availability}</p>
+                        {instructor.availabilityNote && (
+                          <p className="text-brand-gray-300 text-sm font-semibold mt-2">
+                            {instructor.availabilityNote}
+                          </p>
+                        )}
                       </div>
                     </div>
                     {instructor.promo && (
@@ -363,27 +359,29 @@ export default function LessonsPage() {
                         </a>
                       </div>
                     )}
-                    <div className="mt-5 flex flex-col gap-2">
-                      {instructor.lessons.map((lesson) => (
-                        <a
-                          key={lesson.href}
-                          href={lesson.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
-                        >
-                          <span>{lesson.label}</span>
-                          <span className="flex items-center gap-2">
-                            {lesson.originalPrice && (
-                              <span className="text-brand-gray-500 text-xs line-through">
-                                {lesson.originalPrice}
-                              </span>
-                            )}
-                            <span className="text-brand-green">{lesson.price}</span>
-                          </span>
-                        </a>
-                      ))}
-                    </div>
+                    {instructor.lessons && (
+                      <div className="mt-5 flex flex-col gap-2">
+                        {instructor.lessons.map((lesson) => (
+                          <a
+                            key={lesson.href}
+                            href={lesson.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between bg-brand-dark border border-brand-gray-700 hover:border-brand-green text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
+                          >
+                            <span>{lesson.label}</span>
+                            <span className="flex items-center gap-2">
+                              {lesson.originalPrice && (
+                                <span className="text-brand-gray-500 text-xs line-through">
+                                  {lesson.originalPrice}
+                                </span>
+                              )}
+                              <span className="text-brand-green">{lesson.price}</span>
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </FadeIn>
