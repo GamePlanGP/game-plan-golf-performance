@@ -206,7 +206,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-brand-dark/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/30" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16">
           <div className="max-w-2xl">
             <motion.span
               className="inline-block text-brand-green text-sm font-semibold tracking-widest uppercase mb-6"
@@ -244,6 +244,18 @@ export default function Home() {
               GC Quad launch monitors. High-speed video. Real data on every
               shot. Every session at Game Plan is built on real numbers — so
               your improvement is measurable, not theoretical.
+            </motion.p>
+
+            <motion.p
+              className="mt-6 font-heading text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight text-balance max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
+              Stop paying for expensive{" "}
+              <span className="whitespace-nowrap">add-ons</span> — everything
+              you need to get better is in{" "}
+              <span className="text-brand-green">one affordable membership.</span>
             </motion.p>
 
             <motion.div

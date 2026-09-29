@@ -106,9 +106,15 @@ export default function MembershipsPage() {
           <FadeIn delay={0.2}>
             <p className="mt-6 text-lg md:text-xl text-brand-gray-300 max-w-2xl mx-auto leading-relaxed">
               Unlimited GC Quad bay time with high-speed video and full launch
-              monitor data. Open 5am to 10pm, every day. Stop paying for
-              expensive add-ons — everything you need to get better is in one
-              affordable membership.
+              monitor data. Open 5am to 10pm, every day.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <p className="mt-6 font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight text-balance max-w-3xl mx-auto">
+              Stop paying for expensive{" "}
+              <span className="whitespace-nowrap">add-ons</span> — everything
+              you need to get better is in{" "}
+              <span className="text-brand-green">one affordable membership.</span>
             </p>
           </FadeIn>
         </div>
