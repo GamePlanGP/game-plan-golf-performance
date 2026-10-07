@@ -19,6 +19,12 @@ interface Instructor {
   bio: string;
   availability: string;
   availabilityNote?: string;
+  requestCoach?: {
+    before: string;
+    email: string;
+    after: string;
+  };
+  firstOnMobile?: boolean;
   credentials: string[];
   promo?: {
     headline: string;
@@ -35,6 +41,13 @@ interface Instructor {
     bullets: string[];
     href: string;
   };
+  momentumPackage?: {
+    headline: string;
+    price: string;
+    description: string;
+    bullets: string[];
+    href: string;
+  };
   lessons?: InstructorLesson[];
 }
 
@@ -45,7 +58,12 @@ const instructors: Instructor[] = [
     bio: "Ryan built Game Plan around the belief that every golfer deserves access to tour-level coaching. A former competitive amateur turned instructor, he combines swing coaching expertise with athletic performance training — using data from every angle to build plans that actually stick.",
     availability: "Mon & Wed mornings · Tue & Thu afternoons",
     availabilityNote:
-      "Ryan is currently fully booked and not currently taking new students",
+      "Ryan's schedule is currently fully booked. New clients are highly recommended to book with Christian at this time",
+    requestCoach: {
+      before: "Have you been referred to work with Ryan as your coach? Email us at",
+      email: "info@gameplangp.com",
+      after: "to see if there is current availability",
+    },
     credentials: [
       "Swing Catalyst Ambassador",
       "Swing Catalyst Level 2 Certified",
@@ -56,6 +74,7 @@ const instructors: Instructor[] = [
   {
     name: "Christian Chang",
     role: "Lead Instructor",
+    firstOnMobile: true,
     bio: "Christian grew up playing golf in San Diego before turning pro in 2016 and competing on the Mackenzie Tour (PGA Canada) and mini-tour circuits. He brings that competitive, data-informed edge to every lesson — tailoring each session to how the individual golfer moves and what they're working toward. Golf Level 3 TPI Certified with deep expertise in ground reaction forces, he uses force plate data to build an efficient movement pattern tailored to each golfer.",
     availability: "Mon & Wed afternoons · Thu mornings · Fri & Sat 8am–4pm",
     credentials: [
@@ -78,6 +97,17 @@ const instructors: Instructor[] = [
         "Real swing data. Real progress. A real Game Plan",
       ],
       href: NEW_CLIENT_SPECIAL_URL,
+    },
+    momentumPackage: {
+      headline: "4-Lesson Momentum Package",
+      price: "$500",
+      description:
+        "Consistency is what turns a good lesson into a real swing change. The Momentum Package is built for clients who are committed to improving with a true Game Plan to get better.",
+      bullets: [
+        "4 lessons, $500 total",
+        "Must be used within 60 days of purchase. Sessions expire after 60 days if not used!",
+      ],
+      href: "https://clients.uschedule.com/gameplangolfperformance/Product/PrepayServiceDetail/38022",
     },
     lessons: [
       {
@@ -255,7 +285,11 @@ export default function LessonsPage() {
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {instructors.map((instructor, i) => (
-              <FadeIn key={instructor.name} delay={0.1 * i}>
+              <FadeIn
+                key={instructor.name}
+                delay={0.1 * i}
+                className={instructor.firstOnMobile ? "order-first md:order-none" : ""}
+              >
                 <div
                   className={`bg-brand-gray-950 border rounded-lg overflow-hidden ${
                     instructor.promo
@@ -301,6 +335,18 @@ export default function LessonsPage() {
                         {instructor.availabilityNote && (
                           <p className="text-brand-gray-300 text-sm font-semibold mt-2">
                             {instructor.availabilityNote}
+                          </p>
+                        )}
+                        {instructor.requestCoach && (
+                          <p className="text-brand-gray-300 text-sm mt-2">
+                            {instructor.requestCoach.before}{" "}
+                            <a
+                              href={`mailto:${instructor.requestCoach.email}`}
+                              className="text-brand-green font-semibold underline underline-offset-2 hover:text-brand-green-hover"
+                            >
+                              {instructor.requestCoach.email}
+                            </a>{" "}
+                            {instructor.requestCoach.after}
                           </p>
                         )}
                       </div>
@@ -356,6 +402,45 @@ export default function LessonsPage() {
                         >
                           <span>Get the Starter Package</span>
                           <span>{instructor.newClientSpecial.total}</span>
+                        </a>
+                      </div>
+                    )}
+                    {instructor.momentumPackage && (
+                      <div className="mt-4 rounded-lg border border-brand-gray-700 bg-brand-dark p-4">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="bg-brand-green text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                            Adult Package
+                          </span>
+                          <span className="text-brand-green text-sm font-bold">
+                            {instructor.momentumPackage.price}
+                          </span>
+                        </div>
+                        <p className="text-white font-heading font-bold text-base mt-2">
+                          {instructor.momentumPackage.headline}
+                        </p>
+                        <p className="text-brand-gray-300 text-sm leading-relaxed mt-1">
+                          {instructor.momentumPackage.description}
+                        </p>
+                        <ul className="mt-3 space-y-1.5">
+                          {instructor.momentumPackage.bullets.map((bullet) => (
+                            <li key={bullet} className="flex items-start gap-2">
+                              <svg className="w-4 h-4 text-brand-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-brand-gray-300 text-sm leading-relaxed">
+                                {bullet}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        <a
+                          href={instructor.momentumPackage.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-4 flex items-center justify-between bg-brand-green hover:bg-brand-green-hover text-white text-sm font-semibold px-4 py-2.5 rounded transition-colors"
+                        >
+                          <span>Get the Momentum Package</span>
+                          <span>{instructor.momentumPackage.price}</span>
                         </a>
                       </div>
                     )}
