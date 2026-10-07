@@ -10,6 +10,7 @@ import SectionHeader from "@/components/SectionHeader";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import MembershipPopup from "@/components/MembershipPopup";
 import { CITIES_SERVED, isFlashSaleActive, NEW_CLIENT_SPECIAL_URL } from "@/lib/constants";
 
 /* ─── Icon components ─── */
@@ -186,6 +187,7 @@ export default function Home() {
 
   return (
     <>
+      <MembershipPopup />
       {/* ─── Hero ─── */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         {/* Parallax background image */}
