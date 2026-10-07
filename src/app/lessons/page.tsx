@@ -20,8 +20,9 @@ interface Instructor {
   availability: string;
   availabilityNote?: string;
   requestCoach?: {
-    text: string;
+    before: string;
     email: string;
+    after: string;
   };
   firstOnMobile?: boolean;
   credentials: string[];
@@ -59,8 +60,9 @@ const instructors: Instructor[] = [
     availabilityNote:
       "Ryan's schedule is currently fully booked. New clients are highly recommended to book with Christian at this time",
     requestCoach: {
-      text: "Want to work with Ryan specifically? Email Game Plan to highly request Ryan as your coach:",
+      before: "Have you been referred to work with Ryan as your coach? Email us at",
       email: "info@gameplangp.com",
+      after: "to see if there is current availability",
     },
     credentials: [
       "Swing Catalyst Ambassador",
@@ -337,13 +339,14 @@ export default function LessonsPage() {
                         )}
                         {instructor.requestCoach && (
                           <p className="text-brand-gray-300 text-sm mt-2">
-                            {instructor.requestCoach.text}{" "}
+                            {instructor.requestCoach.before}{" "}
                             <a
                               href={`mailto:${instructor.requestCoach.email}`}
                               className="text-brand-green font-semibold underline underline-offset-2 hover:text-brand-green-hover"
                             >
                               {instructor.requestCoach.email}
-                            </a>
+                            </a>{" "}
+                            {instructor.requestCoach.after}
                           </p>
                         )}
                       </div>
