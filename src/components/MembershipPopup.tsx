@@ -69,7 +69,7 @@ export default function MembershipPopup() {
       />
 
       {/* Panel */}
-      <div className="relative w-full max-w-md bg-brand-gray-950 border-2 border-brand-green rounded-lg p-6 md:p-8 max-h-[90vh] overflow-y-auto text-center shadow-[0_0_0_4px_rgba(18,112,85,0.25),0_0_60px_rgba(18,112,85,0.45)]">
+      <div className="relative w-full max-w-md bg-brand-gray-950 border-4 border-white rounded-lg p-6 md:p-8 max-h-[90vh] overflow-y-auto text-center shadow-[0_0_50px_rgba(255,255,255,0.25)]">
         <button
           type="button"
           aria-label="Close"
