@@ -67,4 +67,5 @@ export const FOOTER_LINKS = [
   ...NAV_LINKS,
   { label: "How-To Videos", href: "/howto" },
   { label: "FAQs", href: "/faq" },
+  { label: "Blog", href: "/blog" },
 ];
