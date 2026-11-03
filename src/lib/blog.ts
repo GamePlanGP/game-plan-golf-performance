@@ -12,6 +12,8 @@ export interface BlogSection {
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Title tag shown in search results; keep under ~60 characters. */
+  seoTitle: string;
   excerpt: string;
   keywords: string[];
   sections: BlogSection[];
@@ -22,6 +24,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "how-to-get-the-most-out-of-your-practice-membership",
     title:
       "What to Expect During Your First Practice Session at Game Plan Golf Performance",
+    seoTitle: "Golf Simulator Practice Tips: Your First Session",
     excerpt:
       "What your first session at the GP Lab will feel like, plus how to plan and structure your practice so every session moves your game forward.",
     keywords: [

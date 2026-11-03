@@ -8,13 +8,20 @@ export function createMetadata({
   description,
   path = "",
   keywords = [],
+  omitSiteName = false,
 }: {
   title?: string;
   description?: string;
   path?: string;
   keywords?: string[];
+  /** Use `title` as-is, without the " | Site Name" suffix. */
+  omitSiteName?: boolean;
 }): Metadata {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+  const fullTitle = !title
+    ? SITE_NAME
+    : omitSiteName
+      ? title
+      : `${title} | ${SITE_NAME}`;
   const desc = description || SITE_DESCRIPTION;
   const ogImage = {
     url: `${BASE_URL}/og-logo.png`,

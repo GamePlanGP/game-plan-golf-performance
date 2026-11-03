@@ -13,7 +13,8 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const post = getPost(params.slug);
   if (!post) return {};
   return createMetadata({
-    title: post.title,
+    title: post.seoTitle,
+    omitSiteName: true,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,
